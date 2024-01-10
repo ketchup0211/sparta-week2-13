@@ -1,0 +1,111 @@
+body {
+    background-color: #212121;
+    overflow:scroll;
+}
+
+.movie-list{
+    display : flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.movie-top{
+    background-color: #353535;
+    display: inline-block;
+    
+    margin : 10px;
+    width : 100vw;
+    height: 380px;
+    padding : 0px;
+
+    overflow:hidden;
+    position :relative;
+}
+
+.movie-new, .movie-popular{
+    background-color: #353535;
+    display: inline-block;
+    
+    margin : 10px;
+    width : 170px;
+    height: 280px;
+    padding : 0px;
+    flex : 0 0 auto;
+    flex-flow: row nowrap;
+
+    overflow:hidden;
+    position :relative;
+}
+
+.poster-img {
+    width : 100%;
+    height: 100%;
+    object-fit:cover;
+    position : absolute;
+}
+
+.ranking{
+    font-size: 40px;
+    color :white;
+
+    margin : 5px;
+    padding: 5px;
+
+    position : absolute;
+    top :3px;
+    left : 5px;
+}
+
+.title-top{
+    font-size: 40px;
+    color:white;
+
+    margin : 5px;
+    padding: 5px;
+
+    position : absolute;
+    bottom : 3px;
+    left : 5px;
+}
+
+.title-revew{
+    padding-left: 8px;
+    margin : 0px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.title-list{
+    margin : 0px;
+    color:white;
+    position : absolute;
+    bottom : 10px;
+    left : 10px;
+}
+
+.review{
+    padding-left: 4px;
+    font-size: 14px;
+    color: #d8d5d3;
+}
+
+#recent-review{
+    background-color: #353535;
+    margin : 10px;
+    height: 35px;
+
+    display: flex;
+    align-items: center; 
+}
+
+#new-movie, #popular-movie{
+  margin : 10px 10px 5px 10px;
+  padding-top: 20px;  
+
+  color: white;
+  font-size: 26px;
+}
