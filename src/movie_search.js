@@ -75,3 +75,5 @@ searchInput.addEventListener("keyup", (event) => {
   event.preventDefault();
   handleSearch(searchInput.value);
 });
+
+//test
