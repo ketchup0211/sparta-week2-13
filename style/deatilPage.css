@@ -1,0 +1,179 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background-color: #151515;
+    color: #eee;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    padding: 0 40px;
+    height: 80px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #151515;
+    z-index: 10000;
+}
+
+header p {
+    width: 200px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+}
+
+header input {
+    background-color: transparent;
+    border: none;
+    color: #eee;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* --------------------------------------------- */
+
+main {
+    position: relative;
+    padding-top: 100px;
+    background-image: url(https://i.namu.wiki/i/pYns0gcNCbTD7yp7dBRbNHhyFFTf3cadcVNOZYX_mfZ686xhaDpqn2wKHBvcMMxlymTmdtRMmfe_I9xnTGhN2wVFo-NPvpbyV1LvOecPITKSSGF7m7ALWfaIKAqeWJXBU1RZV1AVLLSeDeTCXd5ELA.webp);
+    background-size: cover;
+    background-position: center;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(40px);
+}
+
+section {
+    padding:40px;
+    position: relative;
+    z-index: 1000;
+}
+
+.info {
+    display: flex;
+    background:linear-gradient(transparent 80%, #151515)
+}
+
+.movie_info {
+    flex: 4;
+}
+
+.movie_info h3 {
+    font-size: 50px;
+    margin-bottom: 100px;
+}
+
+.movie_info p {
+    margin-bottom: 20px;
+}
+
+.summary {
+    width: 60%;
+}
+
+.poster {
+    flex: 1;
+}
+
+.poster img {
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.review {
+    border-top: 1px solid #aaa;
+    display: flex;
+    background-color: #151515;
+}
+
+.review h4 {
+    width: 10%;
+    font-size: 40px;
+    text-transform: capitalize;
+    height: 50px;
+}
+
+.review>div {
+    width: 90%;
+}
+
+.review_input {
+    width: 100%;
+    margin-bottom: 40px;
+    height: 50px;
+    display: flex;
+}
+
+.review_input input {
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 1px solid #eee;
+    margin-left: 20px;
+    color: #eee;
+    font-size: 20px;
+}
+
+#userName {
+    width: 100px;
+    margin-left: 0;
+}
+
+#password {
+    width: 100px;
+}
+
+#reviewWrite {
+    flex: 8;
+}
+
+.review_input button {
+    width: 100px;
+    margin-left: 20px;
+}
+
+.review_output {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.review_output button {
+    width: 100px;
+}
+
+/* --------------------------------------------------------- */
+@media all and (max-width: 1280px) {
+    .review {
+        flex-direction: column;
+    }
+
+    .review h4 {
+        margin-bottom: 20px;
+    }
+
+    .review>div {
+        width: 100%;
+    }
+}
