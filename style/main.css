@@ -13,8 +13,9 @@ body {
 }
 
 .movie-top{
-    background-color: #353535;
+    background-color: black;
     display: inline-block;
+    border-radius: 10px;
     
     margin : 10px;
     width : 100vw;
@@ -26,8 +27,9 @@ body {
 }
 
 .movie-new, .movie-popular{
-    background-color: #353535;
+    background-color: black;
     display: inline-block;
+    border-radius: 10px;
     
     margin : 10px;
     width : 170px;
@@ -45,6 +47,8 @@ body {
     height: 100%;
     object-fit:cover;
     position : absolute;
+
+    opacity: 0.8;
 }
 
 .ranking{
@@ -100,6 +104,7 @@ body {
 
     display: flex;
     align-items: center; 
+    border-radius: 8px;
 }
 
 #new-movie, #popular-movie{
