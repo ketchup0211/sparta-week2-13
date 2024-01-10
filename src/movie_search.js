@@ -49,7 +49,7 @@ const createMovieCards = async () => {
 
 // Search
 const handleSearch = (searchWord) => {
-  const cards = document.querySelector(".card");
+  const cards = document.querySelectorAll(".card");
 
   cards.forEach((card) => {
     const title = card.querySelector(".title").textContent.toLowerCase();
