@@ -102,6 +102,8 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* --------------------------------------------- */
+
 .review {
     border-top: 1px solid #aaa;
     display: flex;
@@ -119,11 +121,15 @@ section {
     width: 90%;
 }
 
+.review_input form {
+    display: flex;
+
+}
 .review_input {
     width: 100%;
     margin-bottom: 40px;
     height: 50px;
-    display: flex;
+
 }
 
 .review_input input {
@@ -155,13 +161,21 @@ section {
 
 .review_output {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    height: 50px;
 }
-
+.review_output div{
+    display: flex;
+    width: 100%;
+}
+.review_output div p{
+    margin-right:20px;
+}
 .review_output button {
     width: 100px;
+    margin-left:auto;
 }
+
 
 /* --------------------------------------------------------- */
 @media all and (max-width: 1280px) {

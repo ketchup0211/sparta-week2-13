@@ -7,12 +7,12 @@
     <title>CineWave</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,-25" />
-        <link rel="stylesheet" href="./style/deatilPage.css">
+    <link rel="stylesheet" href="./style/deatilPage.css">
 </head>
 
 <body>
     <header>
-        <h1><a href="#index.html">CineWave</a></h1>
+        <h1><a href="./index.html">CineWave</a></h1>
         <p><input type="search" placeholder="영화를 검색하세요."><span class="material-symbols-outlined">search</span></p>
     </header>
     <main>
@@ -39,20 +39,171 @@
             <h4>review</h4>
             <div>
                 <article class="review_input">
-                    <input type="text" id="userName" placeholder="작성자">
-                    <input type="password" id="password" placeholder="비밀번호">
-                    <input type="text" id="reviewWrite" placeholder="리뷰를 작성해주세요.">
-                    <button>작성</button>
+                    <form id="reviewForm" action="">
+                        <input type="text" id="userName" placeholder="작성자">
+                        <input type="password" id="password" placeholder="비밀번호">
+                        <input type="text" id="reviewWrite" placeholder="리뷰를 작성해주세요.">
+                        <button id="writeBtn">작성</button>
+                    </form>
                 </article>
-                <article class="review_output">
-                    <p>리뷰쓴다- 하하하하</p>
-                    <button>수정</button>
+                <article id="reviewOutput" class="review_output">
+                    <!-- <div class="review_box">
+                        <p class="output_Name">홍길동</p>
+                        <p class="output_Review">리뷰쓴다- 하하하하</p>
+                        <button id="removeBtn">삭제</button>
+                    </div> -->
                 </article>
             </div>
         </section>
     </main>
     <footer></footer>
 
+    <script>
+        window.onload = function () {
+            loadReviews();
+
+            document.getElementById("removeBtn").addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.removeItem('inputReview')
+                // clear()
+
+                loadReviews();
+            })
+        };
+
+        document.getElementById("writeBtn").addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const inputName = document.getElementById("userName").value;
+            const inputPass = document.getElementById("password").value;
+            const inputReview = document.getElementById("reviewWrite").value;
+
+            let newReview = {
+                user: inputName,
+                password: inputPass,
+                userReview: inputReview,
+            };
+
+            let reviews = getReviews();
+
+            reviews.push(newReview);
+
+            localStorage.setItem('inputReview', JSON.stringify(reviews));
+
+            loadReviews();
+
+            document.getElementById('reviewForm').reset();
+
+        })
+
+        function getReviews() {
+            let reviews = localStorage.getItem('inputReview');
+
+            if (reviews) {
+                return JSON.parse(reviews);
+            } else {
+                return [];
+            }
+        }
+
+        function loadReviews() {
+            let reviewList = document.getElementById('reviewOutput');
+            reviewList.innerHTML = '';
+
+            let reviews = getReviews();
+
+            for (let i = 0; i < reviews.length; i++) {
+                let review = reviews[i];
+
+                let newReviewWrite = document.createElement("div")
+                let temp = document.querySelector(".review_output");
+                let divReviewBox = temp.appendChild(newReviewWrite)
+                divReviewBox.setAttribute("class", "review_box");
+                divReviewBox.innerHTML = `
+                    <p class="output_Name">${review.user}</p>
+                    <p class="output_Review">${review.userReview}</p>
+                    <button id="removeBtn">삭제</button>
+                `
+                reviewList.appendChild(divReviewBox);
+            }
+
+        }
+
+
+
+        // https://goe-coding.tistory.com/38
+
+        // const writeBtn = document.getElementById("writeBtn");
+        // writeBtn.addEventListener("click", function (e) {
+        //     e.preventDefault();
+
+        //     let inputName = document.getElementById("userName").value;
+        //     let inputPass = document.getElementById("password").value;
+        //     let inputReview = document.getElementById("reviewWrite").value;
+
+        //     let newReviewWrite = document.createElement("div")
+        //     let temp = document.querySelector(".review_output");
+        //     let divBox = temp.appendChild(newReviewWrite)
+
+        //     divBox.innerHTML = `
+        //     <div class="review_box">
+        //         <p class="output_Name">${inputName}</p>
+        //         <p class="output_Review">${inputReview}</p>
+        //         <button id="removeBtn">삭제</button>
+        //     </div>
+        //     `
+
+        //     // divBox.setAttribute("class", "card_id");
+        //     // divBox.setAttribute("data-Id", movieId);
+
+        //     localStorage.setItem('inputName', inputName);
+        //     localStorage.setItem('inputPass', inputPass);
+        //     localStorage.setItem('inputReview', inputReview);
+        // });
+
+        // const removeBtn = document.getElementById("removeBtn");
+        // writeBtn.addEventListener("click", function (e) {
+        //     e.preventDefault();
+        //     // removeResults()
+
+        //     localStorage.removeItem('inputName')
+        //     localStorage.removeItem('inputPass')
+        //     localStorage.removeItem('inputReview')
+        // });
+
+
+
+        // localStorage.setItem('key', 'value');
+
+        // const writeResults = function () {
+
+
+
+        // localStorage.getItem(inputName)
+        // localStorage.getItem(inputPass)
+        // localStorage.getItem(inputReview)
+
+        // localStorage.removeItem('key');
+        // local 값 삭제하기
+
+        // console.log(inputName)
+        // console.log(inputPass)
+        // console.log(inputReview)
+        // }
+
+        // const removeResults = function () {
+
+        //     // let outputName = document.getElementById("userName")
+        //     // let outputPass = document.getElementById("password")
+        //     // let outputReview = document.getElementById("reviewWrite")
+
+        //     // let ReviewRemove = document.createElement("div")
+        //     // let temp = document.querySelector(".review_output");
+        //     // let divBox = temp.appendChild(newReviewWrite)
+
+        // }
+
+    </script>
 </body>
 
 </html>
