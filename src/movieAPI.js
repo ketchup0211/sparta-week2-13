@@ -10,43 +10,32 @@ const options = {
   }
 };
 
+// fetching movie data from TMDB(base_url)
+const fetchMovieData = async (endpoint) => {
+  try {
+    const response = await fetch(`${base_url}${endpoint}?api_key=${MOVIE_API}`);
+    const jsonData = await response.json();
+    return jsonData.results;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+// get data from TMDB
 const getMovieData = {
   //  get Top Rated Movie Data frome TMDB API
-  getTopRated: (async function getTopRatedMovieData() {
-    try {
-      const response = await fetch(base_url + "top_rated?api_key=" + MOVIE_API);
-      const jsonData = await response.json();
-      return jsonData.results;
-    } catch (err) {
-      console.log(err);
-    }
-  })(),
+  getTopRated: async () => await fetchMovieData("top_rated"),
 
   //  get Now Playing Movie Data from TMDB API
-  getNowPlaying: (async function getNowPlayingMovieData() {
-    try {
-      const response = await fetch(base_url + "now_playing?api_key=" + MOVIE_API);
-      const jsonData = await response.json();
-      return jsonData.results;
-    } catch (err) {
-      console.log(err);
-    }
-  })(),
+  getNowPlaying: async () => await fetchMovieData("now_playing"),
 
   //  get Polular Movie Data from TMDB API
-  getPolular: (async function getPopularMovieData() {
-    try {
-      const response = await fetch(base_url + "popular?api_key=" + MOVIE_API);
-      const jsonData = await response.json();
-      return jsonData.results;
-    } catch (err) {
-      console.log(err);
-    }
-  })()
+  getPolular: async () => await fetchMovieData("popular")
 };
 
 (async () => {
-  const topRatedData = await getMovieData.getTopRated;
+  const topRatedData = await getMovieData.getTopRated();
   const extractedData = topRatedData.map((movie) => ({
     id: movie.id,
     title: movie.title,
