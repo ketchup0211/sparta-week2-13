@@ -8,8 +8,16 @@ body {
     flex-direction: row;
     flex-wrap:nowrap;
 
-    overflow-x: scroll;
+    overflow-x:auto;
     overflow-y: hidden;
+    
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.movie-list::-webkit-scrollbar{
+    display: none;
 }
 
 .movie-top{
