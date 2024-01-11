@@ -1,1 +1,2 @@
-# sparta-week2-13
+# CineWave
+sparta-week2-13 project입니다.
