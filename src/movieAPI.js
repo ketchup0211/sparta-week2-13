@@ -1,6 +1,5 @@
 // API로부터 id, title, overview, popularity, poster_path 가져오기
-const TMDB_API = config.apikey_tmdb;
-const KOBIS_API = config.apikey_kobis;
+const MOVIE_API = config.apikey;
 const base_url = "https://api.themoviedb.org/3/movie/";
 const options = {
   method: "GET",
@@ -14,7 +13,7 @@ const options = {
 // fetching movie data from TMDB(base_url)
 const fetchMovieData = async (endpoint) => {
   try {
-    const response = await fetch(`${base_url}${endpoint}?api_key=${TMDB_API}`);
+    const response = await fetch(`${base_url}${endpoint}?api_key=${MOVIE_API}`);
     const jsonData = await response.json();
     return jsonData.results;
   } catch (err) {
