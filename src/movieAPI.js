@@ -13,7 +13,7 @@ const options = {
 // fetching movie data from TMDB(base_url)
 const fetchMovieData = async (endpoint) => {
   try {
-    const response = await fetch(`${base_url}${endpoint}?api_key=${MOVIE_API}`);
+    const response = await fetch(`${base_url}${endpoint}?language=ko&api_key=${MOVIE_API}`);
     const jsonData = await response.json();
     return jsonData.results;
   } catch (err) {

@@ -169,7 +169,7 @@ input:focus {
 
 #recent-review{
     background-color: #353535;
-    margin : 10px 10px 10px 20px;
+    margin : 10px 20px 10px 20px;
     height: 35px;
 
     display: flex;

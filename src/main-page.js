@@ -2,27 +2,78 @@ import { getMovieData } from "./movieAPI.js";
 
 // Top Rated Movie
 // TOP 3를 순서대로 받아온다.
-const getTop3 = async () => {
+const getTop3Movie = async () => {
   const topRatedData = await getMovieData.getTopRated();
-  let top3 = top3Data.slice(0, 2);
+  let top3 = topRatedData.slice(0, 3);
 
   const topMovies = document.querySelector("#top-movies");
-  console.log(topMovies);
-  topMovies.innerHTML = top3
-    .map((movie, idx) => {
-      `<img
+
+  top3.forEach((movie, idx) => {
+    // TODO : Poster size setting (@media)
+    let rank = "";
+    switch (idx) {
+      case 0:
+        rank = "st";
+        break;
+      case 1:
+        rank = "nd";
+        break;
+      case 2:
+        rank = "rd";
+        break;
+      default:
+        rank = "th";
+    }
+    const contents = `<img
     class="poster-img"
     id = ${movie.id}
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
     alt="${movie.title}"
   />
-  <p class="ranking">${idx + 1}st</p>
+  <p class="ranking">${idx + 1}${rank}</p>
   <p class="title-top">${movie.title}</p>`;
-    })
-    .join("");
+    topMovies.innerHTML = contents;
+  });
 };
 
-getTop3();
+const getNewMovie = async () => {
+  const topRatedData = await getMovieData.getTopRated();
+  let top3 = topRatedData.slice(0, 3);
+
+  const topMovies = document.querySelector("#top-movies");
+
+  top3.forEach((movie, idx) => {
+    // TODO : Poster size setting (@media)
+    let rank = "";
+    switch (idx) {
+      case 0:
+        rank = "st";
+        break;
+      case 1:
+        rank = "nd";
+        break;
+      case 2:
+        rank = "rd";
+        break;
+      default:
+        rank = "th";
+    }
+    const contents = `<img
+      class="poster-img"
+      id = ${movie.id}
+      src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+      alt="${movie.title}"
+    />
+    <p class="ranking">${idx + 1}${rank}</p>
+    <p class="title-top">${movie.title}</p>`;
+    topMovies.innerHTML = contents;
+  });
+};
+//main
+
+getTop3Movie();
+//getNewMovie();
+
 // Top Rated Card Create
 // const createMovieCards = async () => {
 //   const topRatedData = await getMovieData.getTopRated();

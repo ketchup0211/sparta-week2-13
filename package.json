@@ -1,6 +1,7 @@
 {
   "name": "sparta-week2-13",
   "version": "1.0.0",
+  "type": "module",
   "description": "sparta-week2-13 project입니다.",
   "main": "apikey.js",
   "scripts": {
