@@ -4,64 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cine Wave</title>
-    <link type="text/css" href="./style/main.css" rel="stylesheet" />
-    <script type="text/javascript" src="./src/movieAPI.js" defer></script>
+    <link type="text/css" href="./style/main-page.css" rel="stylesheet" />
+    <script type="module" src="./src/main-page.js" defer></script>
+    <script type="module" src="./src/movieAPI.js" defer></script>
     <script type="text/javascript" src="./apikey.js"></script>
   </head>
   <body>
-    <div class="movie-list">
-      <div class="movie-top">
-        <img
-          class="poster-img"
-          src="https://d2k5miyk6y5zf0.cloudfront.net/article/MYH/20210204/MYH20210204009900038.jpg"
-        />
-        <p class="ranking">1st</p>
-        <p class="title-top">미나리</p>
-      </div>
-    </div>
-
-    <div id="recent-review">
-      <p class="title-revew">
-        Rainy Day in New York
-        <span class="review">티모시 샬라메!</span>
+    <header>
+      <h1><a href="./index.html">CineWave</a></h1>
+      <p>
+        <input type="search" placeholder="영화를 검색하세요." /><span class="material-symbols-outlined">search</span>
       </p>
-    </div>
-
-    <h3 id="new-movie">NEW</h3>
-    <div class="movie-list">
-      <div class="movie-new">
-        <img
-          class="poster-img"
-          src="https://d2k5miyk6y5zf0.cloudfront.net/article/MYH/20210204/MYH20210204009900038.jpg"
-        />
-        <p class="title-list">Movie Title</p>
+    </header>
+    <div class="container">
+      <!--Top 3 Slide Container-->
+      <div class="movie-list">
+        <div class="slider-container">
+          <div id="top-movies">
+            <!--Top3 movies-->
+          </div>
+          <div class="btn-container">
+            <button class="btn" id="left-btn">
+              <img src="./assets/left-arrow-button.png" alt="왼쪽 화살표" />
+            </button>
+            <button class="btn" id="right-btn">
+              <img src="./assets/right-arrow-button.png" alt="오른쪽 화살표" />
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-      <div class="movie-new"></div>
-    </div>
-    <h3 id="popular-movie">POPULAR</h3>
-    <div class="movie-list">
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
-      <div class="movie-popular"></div>
+      <!--Recent Review Container-->
+      <div id="recent-review">
+        <p class="title-revew">
+          Rainy Day in New York
+          <span class="review">티모시 샬라메!</span>
+        </p>
+      </div>
+      <!--Now Plating Movie List Container-->
+      <h3 id="new-movie">Now Playing</h3>
+      <div class="movie-list" id="now-movies">
+        <!--Now movies-->
+      </div>
+
+      <!--Popular Movie List Container-->
+      <h3 id="popular-movie">Popular</h3>
+      <div class="movie-list" id="popular-movies">
+        <!--Popular movies-->
+      </div>
     </div>
   </body>
 </html>
