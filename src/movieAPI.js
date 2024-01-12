@@ -47,6 +47,8 @@ const getMovieData = {
   console.log(extractedData);
 })();
 
+export default getMovieData;
+
 // // Card Create
 // const createMovieCards = async () => {
 //   const data = await getData();
