@@ -13,7 +13,7 @@ const options = {
 // fetching movie data from TMDB(base_url)
 const fetchMovieData = async (endpoint) => {
   try {
-    const response = await fetch(`${base_url}${endpoint}?api_key=${MOVIE_API}`);
+    const response = await fetch(`${base_url}${endpoint}?language=ko&api_key=${MOVIE_API}`);
     const jsonData = await response.json();
     return jsonData.results;
   } catch (err) {
@@ -21,6 +21,8 @@ const fetchMovieData = async (endpoint) => {
     return [];
   }
 };
+
+
 
 // get data from TMDB
 const getMovieData = {
@@ -31,21 +33,33 @@ const getMovieData = {
   getNowPlaying: async () => await fetchMovieData("now_playing"),
 
   //  get Polular Movie Data from TMDB API
-  getPolular: async () => await fetchMovieData("popular")
+  getPolular: async () => await fetchMovieData("popular"),
+
+  getMovieDetails: async (movieId) => {
+    try {
+      const response = await fetch(`${base_url}${movieId}?language=ko&api_key=${MOVIE_API}`);
+      const jsonData = await response.json();
+      return jsonData;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 };
 
-(async () => {
-  const topRatedData = await getMovieData.getTopRated();
-  const extractedData = topRatedData.map((movie) => ({
-    id: movie.id,
-    title: movie.title,
-    overview: movie.overview,
-    popularity: movie.popularity,
-    posterPath: movie.poster_path
-  }));
+export { getMovieData, fetchMovieData, options };
+// (async () => {
+//   const topRatedData = await getMovieData.getTopRated();
+//   const extractedData = topRatedData.map((movie) => ({
+//     id: movie.id,
+//     title: movie.title,
+//     overview: movie.overview,
+//     popularity: movie.popularity,
+//     posterPath: movie.poster_path
+//   }));
 
-  console.log(extractedData);
-})();
+//   console.log(extractedData);
+// })();
 
 // // Card Create
 // const createMovieCards = async () => {
