@@ -84,10 +84,6 @@ input:focus {
     position :relative;
 }
 
-.movie-top{
-    
-}
-
 .movie-new, .movie-popular{
     background-color: black;
     display: inline-block;
@@ -193,6 +189,7 @@ input:focus {
    background-color:transparent;
    border : 0px;
    padding : 1px;
+   cursor: pointer;
 }
 
 button > img{

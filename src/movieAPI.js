@@ -34,20 +34,19 @@ const getMovieData = {
   getPolular: async () => await fetchMovieData("popular")
 };
 
-(async () => {
-  const topRatedData = await getMovieData.getTopRated();
-  const extractedData = topRatedData.map((movie) => ({
-    id: movie.id,
-    title: movie.title,
-    overview: movie.overview,
-    popularity: movie.popularity,
-    posterPath: movie.poster_path
-  }));
+export { getMovieData, fetchMovieData, options };
+// (async () => {
+//   const topRatedData = await getMovieData.getTopRated();
+//   const extractedData = topRatedData.map((movie) => ({
+//     id: movie.id,
+//     title: movie.title,
+//     overview: movie.overview,
+//     popularity: movie.popularity,
+//     posterPath: movie.poster_path
+//   }));
 
-  console.log(extractedData);
-})();
-
-export default getMovieData;
+//   console.log(extractedData);
+// })();
 
 // // Card Create
 // const createMovieCards = async () => {

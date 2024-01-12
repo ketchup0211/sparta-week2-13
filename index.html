@@ -6,6 +6,7 @@
     <title>Cine Wave</title>
     <link type="text/css" href="./style/main-page.css" rel="stylesheet" />
     <script type="text/javascript" src="./src/main-page.js" defer></script>
+    <script type="module" src="./src/movieAPI.js" defer></script>
     <script type="text/javascript" src="./apikey.js"></script>
   </head>
   <body>
@@ -16,16 +17,10 @@
       </p>
     </header>
     <div class="container">
-      <div class="movie-list" id="top-movies">
+      <div class="movie-list">
         <div class="slider-container">
-          <div class="movie-top">
-            <img
-              class="poster-img"
-              src="https://d2k5miyk6y5zf0.cloudfront.net/article/MYH/20210204/MYH20210204009900038.jpg"
-              alt="movie poster"
-            />
-            <p class="ranking">1st</p>
-            <p class="title-top">미나리</p>
+          <div id="top-movies">
+            <!--slide img-->
           </div>
           <div class="btn-container">
             <button class="btn" id="left-btn">
