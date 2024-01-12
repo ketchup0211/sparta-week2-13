@@ -8,8 +8,9 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,-25"
     />
-    <link rel="stylesheet" href="./searchpage_hong.css" />
-    <script></script>
+    <link rel="stylesheet" href="./style/searchpage_hong.css" />
+    <script type="module" src="./src/movieAPI.js"></script>
+    <script type="module" src="./src/search-page.js"></script>
   </head>
   <body>
     <header>
@@ -21,27 +22,7 @@
 
     <main>
       <section>
-        <div class="title-card-container">
-          <div class="title-card">
-            <img class="poster" src="https://www.artinsight.co.kr/data/tmp/2103/20210330210944_aocsqyem.jpg" />
-          </div>
-          <!-- 이 단위가 반복  -->
-          <div class="title-card">
-            <img class="poster" src="https://www.artinsight.co.kr/data/tmp/2103/20210330210944_aocsqyem.jpg" />
-          </div>
-          <div class="title-card">
-            <img class="poster" src="https://www.artinsight.co.kr/data/tmp/2103/20210330210944_aocsqyem.jpg" />
-          </div>
-          <div class="title-card">
-            <img class="poster" src="https://www.artinsight.co.kr/data/tmp/2103/20210330210944_aocsqyem.jpg" />
-          </div>
-          <div class="title-card">
-            <img class="poster" src="https://www.artinsight.co.kr/data/tmp/2103/20210330210944_aocsqyem.jpg" />
-          </div>
-          <div class="title-card">
-            <img class="poster" src="https://www.artinsight.co.kr/data/tmp/2103/20210330210944_aocsqyem.jpg" />
-          </div>
-        </div>
+        <ul class="searched-list"></ul>
       </section>
     </main>
     <footer>copyright. CineWave</footer>
