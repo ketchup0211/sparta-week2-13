@@ -2,7 +2,7 @@ import { getMovieData } from "./movieAPI.js";
 
 // Top Rated Card Create
 const createMovieCards = async () => {
-  const data = await getMovieData.getTopRated();
+  const topRatedData = await getMovieData.getTopRated();
 
   const card_container = document.querySelector("#card_container");
 
