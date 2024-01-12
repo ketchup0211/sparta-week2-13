@@ -84,7 +84,7 @@ input:focus {
     position :relative;
 }
 
-.movie-new, .movie-popular{
+.now, .popular{
     background-color: black;
     display: inline-block;
     border-radius: 10px;

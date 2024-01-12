@@ -36,43 +36,30 @@ const getTop3Movie = async () => {
   });
 };
 
-const getNewMovie = async () => {
-  const topRatedData = await getMovieData.getTopRated();
-  let top3 = topRatedData.slice(0, 3);
+//  Now Playing Movie
+//  현재 상영중인 영화 데이터를 받아온다.
+const getNowMovie = async () => {
+  const nowPlayingData = await getMovieData.getNowPlaying();
 
-  const topMovies = document.querySelector("#top-movies");
+  const nowMovies = document.querySelector("#now-movies");
 
-  top3.forEach((movie, idx) => {
-    // TODO : Poster size setting (@media)
-    let rank = "";
-    switch (idx) {
-      case 0:
-        rank = "st";
-        break;
-      case 1:
-        rank = "nd";
-        break;
-      case 2:
-        rank = "rd";
-        break;
-      default:
-        rank = "th";
-    }
-    const contents = `<img
+  let movieList = "";
+  nowPlayingData.forEach((movie) => {
+    let card = `<div class="now" id=${movie.id}>
+    <img
       class="poster-img"
-      id = ${movie.id}
       src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
-      alt="${movie.title}"
     />
-    <p class="ranking">${idx + 1}${rank}</p>
-    <p class="title-top">${movie.title}</p>`;
-    topMovies.innerHTML = contents;
+    <p class="title-list">${movie.title}</p>
+  </div>`;
+    movieList = movieList.concat(card);
   });
+  nowMovies.innerHTML = movieList;
 };
 //main
 
 getTop3Movie();
-//getNewMovie();
+getNowMovie();
 
 // Top Rated Card Create
 // const createMovieCards = async () => {
