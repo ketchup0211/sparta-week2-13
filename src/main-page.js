@@ -56,10 +56,33 @@ const getNowMovie = async () => {
   });
   nowMovies.innerHTML = movieList;
 };
+
+//  Now Playing Movie
+//  현재 상영중인 영화 데이터를 받아온다.
+const getPopularMovie = async () => {
+  const popularData = await getMovieData.getPolular();
+
+  const popularMovies = document.querySelector("#popular-movies");
+
+  let movieList = "";
+  popularData.forEach((movie) => {
+    let card = `<div class="now" id=${movie.id}>
+      <img
+        class="poster-img"
+        src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+      />
+      <p class="title-list">${movie.title}</p>
+    </div>`;
+    movieList = movieList.concat(card);
+  });
+  popularMovies.innerHTML = movieList;
+};
+
 //main
 
 getTop3Movie();
 getNowMovie();
+getPopularMovie();
 
 // Top Rated Card Create
 // const createMovieCards = async () => {
