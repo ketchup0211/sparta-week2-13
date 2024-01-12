@@ -14,6 +14,9 @@ body {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    position :relative;
+    align-items: center;
 }
 
 .movie-list::-webkit-scrollbar{
@@ -105,6 +108,12 @@ body {
     color: #d8d5d3;
 }
 
+.switch-btn{
+    position : absolute;
+    z-index: 1;
+    width: 30px;
+}
+
 #recent-review{
     background-color: #353535;
     margin : 10px;
@@ -121,4 +130,12 @@ body {
 
   color: white;
   font-size: 26px;
+}
+
+#left-btn{
+    left : 12px;
+}
+
+#right-btn{
+    right : 12px;
 }
