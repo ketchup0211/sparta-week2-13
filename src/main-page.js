@@ -14,70 +14,46 @@ const getTop3Movie = async () => {
   const topMovies = document.querySelector("#top-movies");
 
   top3.forEach((movie, idx) => {
-    let rank = "";
-    switch (idx) {
-      case 0:
-        rank = "st";
-        break;
-      case 1:
-        rank = "nd";
-        break;
-      case 2:
-        rank = "rd";
-        break;
-      default:
-        rank = "th";
-    }
+    const rankSuffix = idx === 0 ? "st" : idx === 1 ? "nd" : idx === 2 ? "rd" : "th";
+
     const contents = `<img
     class="poster-img"
     id = ${movie.id}
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
     alt="${movie.title}"
   />
-  <p class="ranking">${idx + 1}${rank}</p>
+  <p class="ranking">${idx + 1}${rankSuffix}</p>
   <p class="title-top">${movie.title}</p>`;
     topMovies.innerHTML = contents;
   });
 };
 
-//  Now Playing Movie
-const getNowMovie = async () => {
-  const nowPlayingData = await getMovieData.getNowPlaying();
+// get Movie List
+const renderMovies = async (getDataFunction, containerId, cardClass) => {
+  const movieData = await getDataFunction();
+  const container = document.querySelector(containerId);
 
-  const nowMovies = document.querySelector("#now-movies");
+  const movieList = movieData
+    .map(
+      (movie) => `
+      <div class="${cardClass}" id="${movie.id}">
+        <img class="poster-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" />
+        <p class="title-list">${movie.title}</p>
+      </div>`
+    )
+    .join("");
 
-  let movieList = "";
-  nowPlayingData.forEach((movie) => {
-    let card = `<div class="now" id=${movie.id}>
-    <img
-      class="poster-img"
-      src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
-    />
-    <p class="title-list">${movie.title}</p>
-  </div>`;
-    movieList = movieList.concat(card);
-  });
-  nowMovies.innerHTML = movieList;
+  container.innerHTML = movieList;
 };
 
-//  Popular Movie
+// Now Playing Movie
+const getNowMovie = async () => {
+  await renderMovies(getMovieData.getNowPlaying, "#now-movies", "now");
+};
+
+// Popular Movie
 const getPopularMovie = async () => {
-  const popularData = await getMovieData.getPolular();
-
-  const popularMovies = document.querySelector("#popular-movies");
-
-  let movieList = "";
-  popularData.forEach((movie) => {
-    let card = `<div class="now" id=${movie.id}>
-      <img
-        class="poster-img"
-        src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
-      />
-      <p class="title-list">${movie.title}</p>
-    </div>`;
-    movieList = movieList.concat(card);
-  });
-  popularMovies.innerHTML = movieList;
+  await renderMovies(getMovieData.getPolular, "#popular-movies", "popular");
 };
 
 //main
