@@ -3,8 +3,7 @@ import { getMovieData } from "./movieAPI.js";
 // TODO#1 : getTop3MoviePoster size setting (@media)
 // TODO#2 : click 시 영화 id return
 // TODO#3 : Top3 movie slide 기능 추가
-// TODO#4 : 함수 최적화하기
-// TODO#5 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
+// TODO#4 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
 
 // Top Rated Movie
 const getTop3Movie = async () => {
@@ -13,72 +12,58 @@ const getTop3Movie = async () => {
 
   const topMovies = document.querySelector("#top-movies");
 
+  let movieList = "";
   top3.forEach((movie, idx) => {
-    let rank = "";
-    switch (idx) {
-      case 0:
-        rank = "st";
-        break;
-      case 1:
-        rank = "nd";
-        break;
-      case 2:
-        rank = "rd";
-        break;
-      default:
-        rank = "th";
-    }
-    const contents = `<img
+    const rankSuffix = idx === 0 ? "st" : idx === 1 ? "nd" : idx === 2 ? "rd" : "th";
+
+    const contents = `<div class ="idx${idx}" id = ${movie.id} >
+    <img
     class="poster-img"
-    id = ${movie.id}
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
     alt="${movie.title}"
   />
-  <p class="ranking">${idx + 1}${rank}</p>
-  <p class="title-top">${movie.title}</p>`;
-    topMovies.innerHTML = contents;
+  <p class="ranking">${idx + 1}${rankSuffix}</p>
+  <p class="title-top">${movie.title}</p></div>`;
+    movieList = movieList.concat("", contents);
   });
+  topMovies.innerHTML = movieList;
+
+  let idx0 = topMovies.querySelector("div");
+  idx0.classList.add("active");
 };
 
-//  Now Playing Movie
+// get Movie List
+const renderMovies = async (getDataFunction, containerId, cardClass) => {
+  const movieData = await getDataFunction();
+  const container = document.querySelector(containerId);
+
+  const movieList = movieData
+    .map(
+      (movie) => `
+      <div class="${cardClass}" id="${movie.id}">
+        <img class="poster-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" />
+        <p class="title-list">${movie.title}</p>
+      </div>`
+    )
+    .join("");
+
+  container.innerHTML = movieList;
+};
+
+// Now Playing Movie
 const getNowMovie = async () => {
-  const nowPlayingData = await getMovieData.getNowPlaying();
-
-  const nowMovies = document.querySelector("#now-movies");
-
-  let movieList = "";
-  nowPlayingData.forEach((movie) => {
-    let card = `<div class="now" id=${movie.id}>
-    <img
-      class="poster-img"
-      src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
-    />
-    <p class="title-list">${movie.title}</p>
-  </div>`;
-    movieList = movieList.concat(card);
-  });
-  nowMovies.innerHTML = movieList;
+  await renderMovies(getMovieData.getNowPlaying, "#now-movies", "now");
 };
 
-//  Popular Movie
+// Popular Movie
 const getPopularMovie = async () => {
-  const popularData = await getMovieData.getPolular();
-
-  const popularMovies = document.querySelector("#popular-movies");
-
-  let movieList = "";
-  popularData.forEach((movie) => {
-    let card = `<div class="now" id=${movie.id}>
-      <img
-        class="poster-img"
-        src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
-      />
-      <p class="title-list">${movie.title}</p>
-    </div>`;
-    movieList = movieList.concat(card);
-  });
-  popularMovies.innerHTML = movieList;
+  await renderMovies(getMovieData.getPolular, "#popular-movies", "popular");
 };
+
+function rightSlide() {}
+
+const leftBtn = document.getElementById("left-btn");
+//leftBtn.addEventListener("click", leftSide);
 
 //main
 
@@ -111,13 +96,3 @@ getPopularMovie();
 //     else alert(`영화 id : ${target.parentNode.id}`);
 //   }
 // };
-
-/**
- * <img
-              class="poster-img"
-              src="https://d2k5miyk6y5zf0.cloudfront.net/article/MYH/20210204/MYH20210204009900038.jpg"
-              alt="movie poster"
-            />
-            <p class="ranking">1st</p>
-            <p class="title-top">미나리</p>
- */
