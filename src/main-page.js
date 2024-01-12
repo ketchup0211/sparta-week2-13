@@ -1,7 +1,12 @@
 import { getMovieData } from "./movieAPI.js";
 
+// TODO#1 : getTop3MoviePoster size setting (@media)
+// TODO#2 : click 시 영화 id return
+// TODO#3 : Top3 movie slide 기능 추가
+// TODO#4 : 함수 최적화하기
+// TODO#5 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
+
 // Top Rated Movie
-// TOP 3를 순서대로 받아온다.
 const getTop3Movie = async () => {
   const topRatedData = await getMovieData.getTopRated();
   let top3 = topRatedData.slice(0, 3);
@@ -9,7 +14,6 @@ const getTop3Movie = async () => {
   const topMovies = document.querySelector("#top-movies");
 
   top3.forEach((movie, idx) => {
-    // TODO : Poster size setting (@media)
     let rank = "";
     switch (idx) {
       case 0:
@@ -37,7 +41,6 @@ const getTop3Movie = async () => {
 };
 
 //  Now Playing Movie
-//  현재 상영중인 영화 데이터를 받아온다.
 const getNowMovie = async () => {
   const nowPlayingData = await getMovieData.getNowPlaying();
 
@@ -57,8 +60,7 @@ const getNowMovie = async () => {
   nowMovies.innerHTML = movieList;
 };
 
-//  Now Playing Movie
-//  현재 상영중인 영화 데이터를 받아온다.
+//  Popular Movie
 const getPopularMovie = async () => {
   const popularData = await getMovieData.getPolular();
 
