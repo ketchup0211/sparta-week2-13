@@ -1,12 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 body {
-    background-color: #212121;
     overflow:scroll;
+    background-color: #151515;
+    color: #eee;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    padding: 0 40px;
+    height: 80px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #151515;
+    z-index: 10000;
+}
+
+header p {
+    width: 200px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+}
+
+header input {
+    background-color: transparent;
+    border: none;
+    color: #eee;
+}
+
+input:focus {
+    outline: none;
+}
+
+.container {
+    margin-top: 90px;
 }
 
 .movie-list{
     display : flex;
     flex-direction: row;
     flex-wrap:nowrap;
+    margin : 10px;
 
     overflow-x:auto;
     overflow-y: hidden;
@@ -23,7 +70,7 @@ body {
     display: none;
 }
 
-.movie-top{
+.slider-container{
     background-color: black;
     display: inline-block;
     border-radius: 10px;
@@ -35,6 +82,10 @@ body {
 
     overflow:hidden;
     position :relative;
+}
+
+.movie-top{
+    
 }
 
 .movie-new, .movie-popular{
@@ -110,13 +161,16 @@ body {
 
 .switch-btn{
     position : absolute;
+    line-height: 380px;
+    padding : 10px;
     z-index: 1;
-    width: 30px;
+    margin: 0px auto;
+    display: inline-block;
 }
 
 #recent-review{
     background-color: #353535;
-    margin : 10px;
+    margin : 10px 10px 10px 20px;
     height: 35px;
 
     display: flex;
@@ -125,17 +179,17 @@ body {
 }
 
 #new-movie, #popular-movie{
-  margin : 10px 10px 5px 10px;
+  margin : 10px 10px 5px 20px;
   padding-top: 20px;  
 
   color: white;
   font-size: 26px;
 }
 
-#left-btn{
+#left-btn *{
     left : 12px;
 }
 
-#right-btn{
+#right-btn *{
     right : 12px;
 }

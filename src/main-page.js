@@ -4,9 +4,9 @@ import { getMovieData } from "./movieAPI.js";
 const createMovieCards = async () => {
   const topRatedData = await getMovieData.getTopRated();
 
-  const card_container = document.querySelector("#card_container");
+  const topMovies = document.querySelector("#top-movies");
 
-  card_container.innerHTML = data
+  topMovies.innerHTML = data
     .map(
       (movie) =>
         `<div class ="card" id=${movie.id}>
