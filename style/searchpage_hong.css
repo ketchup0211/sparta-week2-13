@@ -39,9 +39,10 @@ input:focus {
 
 body {
   background-color: #151515;
+  color: #eee;
 }
 
-.title-card-container {
+/* .title-card-container {
   display: flex;
   flex-direction: row;
 
@@ -52,4 +53,4 @@ body {
 .poster {
   width: 200px;
   height: 150px;
-}
+} */
