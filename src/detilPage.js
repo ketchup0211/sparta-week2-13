@@ -177,3 +177,13 @@ function validatePassword(savedPass, inputPass) {
     // 비밀번호 일치 여부 확인
     return savedPass === inputPass;
 }
+
+// [main page, detail page 공통] input을 클릭하면 search page로 이동
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("search-input");
+  
+    searchInput.addEventListener("click", function () {
+      // 검색창(input)이 클릭되면 검색 페이지로 이동
+      window.location.href = "searchPage.html";
+    });
+  });
