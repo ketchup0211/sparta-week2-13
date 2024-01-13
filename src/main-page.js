@@ -19,7 +19,7 @@ const getTop3Movie = async () => {
     const contents = `<div class ="idx${idx}" id = ${movie.id} >
     <img
     class="poster-img"
-    src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+    src="https://image.tmdb.org/t/p/original${movie.backdrop_path}"
     alt="${movie.title}"
   />
   <p class="ranking">${idx + 1}${rankSuffix}</p>
@@ -41,7 +41,7 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
     .map(
       (movie) => `
       <div class="${cardClass}" id="${movie.id}">
-        <img class="poster-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" />
+        <img class="poster-img" src="https://image.tmdb.org/t/p/original${movie.poster_path}" />
         <p class="title-list">${movie.title}</p>
       </div>`
     )
@@ -70,6 +70,24 @@ const leftBtn = document.getElementById("left-btn");
 getTop3Movie();
 getNowMovie();
 getPopularMovie();
+
+// Render Now Playing Movies
+renderMovies(getMovieData.getNowPlaying, "#now-movies", "now");
+
+// Render Popular Movies
+renderMovies(getMovieData.getPolular, "#popular-movies", "popular");
+
+// Click event handler for both now-movies and popular-movies
+document.querySelector(".container").addEventListener("click", function (event) {
+  const clickedMovieElement = event.target.closest(".now, .popular");
+
+  if (clickedMovieElement) {
+    const clickedMovieId = clickedMovieElement.id;
+
+    // 클릭한 영화의 ID를 가지고 detailPage.html로 이동
+    window.location.href = `detailPage.html?id=${clickedMovieId}`;
+  }
+});
 
 // Top Rated Card Create
 // const createMovieCards = async () => {

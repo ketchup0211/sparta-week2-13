@@ -22,6 +22,8 @@ const fetchMovieData = async (endpoint) => {
   }
 };
 
+
+
 // get data from TMDB
 const getMovieData = {
   //  get Top Rated Movie Data frome TMDB API
@@ -31,7 +33,18 @@ const getMovieData = {
   getNowPlaying: async () => await fetchMovieData("now_playing"),
 
   //  get Polular Movie Data from TMDB API
-  getPolular: async () => await fetchMovieData("popular")
+  getPolular: async () => await fetchMovieData("popular"),
+
+  getMovieDetails: async (movieId) => {
+    try {
+      const response = await fetch(`${base_url}${movieId}?language=ko&api_key=${MOVIE_API}`);
+      const jsonData = await response.json();
+      return jsonData;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 };
 
 export { getMovieData, fetchMovieData, options };
