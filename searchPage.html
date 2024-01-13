@@ -9,23 +9,24 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,-25"
     />
     <link rel="stylesheet" href="./style/searchPage.css" />
-    <script type="text/javascript" src="./src/movieAPI.js"></script>
-    <script type="text/javascript" src="./src/searchPage.js"></script>
+    <script type="module" src="./src/searchPage.js"></script>
+    <script type="module" src="./src/movieAPI.js"></script>
+    <script type="text/javascript" src="./apikey.js"></script>
   </head>
   <body>
     <header>
       <h1><a href="./index.html">CineWave</a></h1>
       <p>
-        <input type="search" id="search-input" placeholder="영화를 검색하세요." />
+        <form id="search-form" class="form">
+          <input type="search" id="search-input" placeholder="영화를 검색하세요." />
+        </form> 
         <span class="material-symbols-outlined">search</span>
       </p>
     </header>
+    <ul id="top-list"></ul>
+    <ul id="now-list"></ul>
+    <ul id="popular-list"></ul>
 
-    <main>
-      <section>
-        <ul class="searched-list"></ul>
-      </section>
-    </main>
     <footer>copyright. CineWave</footer>
   </body>
 </html>
