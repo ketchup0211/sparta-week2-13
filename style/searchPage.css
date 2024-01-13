@@ -8,6 +8,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 header {
   width: 100%;
   position: fixed;
@@ -40,6 +41,20 @@ input:focus {
 body {
   background-color: #151515;
   color: #eee;
+}
+
+#top-list,
+#now-list,
+#popular-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+
+  padding: 2rem;
+}
+
+.movie-img {
+  width: 100%;
 }
 
 /* .title-card-container {
