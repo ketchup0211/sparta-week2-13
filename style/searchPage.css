@@ -38,9 +38,32 @@ input:focus {
   outline: none;
 }
 
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: #eee solid 1px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  cursor: pointer;
+}
+
 body {
   background-color: #151515;
   color: #eee;
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 #top-list,
@@ -56,16 +79,3 @@ body {
 .movie-img {
   width: 100%;
 }
-
-/* .title-card-container {
-  display: flex;
-  flex-direction: row;
-
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.poster {
-  width: 200px;
-  height: 150px;
-} */
