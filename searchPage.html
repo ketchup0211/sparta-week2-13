@@ -16,17 +16,16 @@
   <body>
     <header>
       <h1><a href="./index.html">CineWave</a></h1>
-      <p>
+      <div class="form-container">
         <form id="search-form" class="form">
-          <input type="search" id="search-input" placeholder="영화를 검색하세요." />
-        </form> 
-        <span class="material-symbols-outlined">search</span>
-      </p>
+          <input type="search" name="searchValue" id="search-input" placeholder="영화를 검색하세요." />
+          <span class="material-symbols-outlined">search</span>
+        </form>
+      </div>
     </header>
-    <ul id="top-list"></ul>
-    <ul id="now-list"></ul>
-    <ul id="popular-list"></ul>
-
+    <ul class="movie-list" id="top-list"></ul>
+    <ul class="movie-list" id="now-list"></ul>
+    <ul class="movie-list" id="popular-list"></ul>
     <footer>copyright. CineWave</footer>
   </body>
 </html>
