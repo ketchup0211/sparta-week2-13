@@ -253,6 +253,7 @@ document.getElementById("writeBtn").addEventListener("click", function (e) {
     reviews.push(newReview);
 
     localStorage.setItem("inputReview", JSON.stringify(reviews));
+    localStorage.setItem("movieID", movieId);
 
     loadReviews();
 
@@ -355,13 +356,14 @@ document.addEventListener("DOMContentLoaded", function () {
  */
 function loadLatestReview() {
   let reviews = getReviews();
+  let movidID = localStorage.getItem("movieID");
 
   if (!reviews.length) {
     let review = reviews[reviews.length - 1];
-    return review;
+    return { review: reviews, movieID: movidID };
   }
 
   return null;
 }
 
-//export { loadLatestReview };
+export { loadLatestReview };

@@ -1,5 +1,5 @@
 import { getMovieData } from "./movieAPI.js";
-//import { loadLatestReview } from "./detailPage.js";
+//import { loadLatestReview } from "./detilPage.js";
 
 // TODO#4 : 최근에 올라온 리뷰 보여주기
 // LAST : 파일 정리 (파일명, 폴더, 최적화 등)
