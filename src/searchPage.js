@@ -4,8 +4,12 @@ import { getMovieData } from "./movieAPI.js";
 // 카드 만들기
 const makeCards = async (getDataType, container, cardType) => {
   const movieData = await getDataType();
-
   const Cards = document.querySelector(container);
+
+  if (!Array.isArray(movieData)) {
+    throw new Error("Invalid data format");
+  }
+
   Cards.innerHTML = movieData
     .map(
       (movie) => `
@@ -19,93 +23,74 @@ const makeCards = async (getDataType, container, cardType) => {
   console.log(Cards);
 };
 
-// Top-Rated
-const getTopMovie = async () => {
-  await makeCards(getMovieData.getTopRated, "#top-list", "top");
-};
-
-// Now-Playing
-const getNowMovie = async () => {
-  await makeCards(getMovieData.getNowPlaying, "#now-list", "now");
-};
-
-// Popular
-const getPopularMovie = async () => {
-  await makeCards(getMovieData.getPolular, "#popular-list", "popular");
-};
-
-getTopMovie();
-getNowMovie();
-getPopularMovie();
-
-// 검색
-// 검색어에 title이 포함된 영화만 filtering
-const showSearchResult = (searchKeyword) => {
-  const movieCards = document.querySelectorAll(".movie-card");
-
-  movieCards.forEach((card) => {
-    const title = card.querySelector(".movie-title").id.toLowerCase();
-    const searchedValue = searchKeyword.toLowerCase();
-
-    if (title.includes(searchedValue)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
+// 검색 -
+const searchAndUpdateCards = async (searchKeyword) => {
+  try {
+    if (!searchKeyword.trim()) {
+      console.log("유효하지 않은 검색어");
+      return;
     }
-  });
+
+    // TMDB API : search movie
+    const searchResult = await getMovieData.search(searchKeyword);
+
+    // TMDB API : search, Top Rated, Now Playing, Popular
+    const topMovies = await getMovieData.getTopRated();
+    const nowPlayingMovies = await getMovieData.getNowPlaying();
+    const popularMovies = await getMovieData.getPolular();
+
+    const allMovies = [...topMovies, ...nowPlayingMovies, ...popularMovies];
+
+    // 검색 결과 메세지
+    const searchContainer = document.querySelector("#search-list");
+    const messageContainer = document.querySelector("#search-message");
+    const messageElement = document.createElement("h4");
+
+    searchContainer.innerHTML = "";
+    messageContainer.innerHTML = "";
+
+    messageElement.textContent = `"${searchKeyword}"에 대한 검색 결과`;
+    messageContainer.appendChild(messageElement);
+
+    // 검색 결과 필터링 : 전체 영화 중에서 top, now playing, popular
+    const filteredSearchResults = searchResult.results.filter((searchedMovie) =>
+      allMovies.some((movie) => movie.id === searchedMovie.id && movie.title === searchedMovie.title)
+    );
+
+    if (filteredSearchResults.length > 0) {
+      makeCards(async () => filteredSearchResults, "#search-list", "search");
+    } else {
+      const noResultsMessage = document.createElement("h5");
+      noResultsMessage.textContent = `"${searchKeyword}"에 대한 검색 결과가 없습니다.`;
+      searchContainer.appendChild(noResultsMessage);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-// form 제출 시 검색 결과 표시
+// 검색어를 입력하고  제출 시 검색 결과 표시
 const form = document.querySelector("#search-form");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const searchInput = document.querySelector("#search-input");
-  showSearchResult(searchInput.value);
+  searchAndUpdateCards(searchInput.value);
 });
 
 // 검색어 입력 시 실시간으로 검색 결과 표시
 const searchInput = document.querySelector("#search-input");
-searchInput.addEventListener("input", () => {
-  showSearchResult(searchInput.value);
+searchInput.addEventListener("keyup", () => {
+  searchAndUpdateCards(searchInput.value);
 });
 
-// Click event handler for both now-movies and popular-movies
-document.querySelector(".movie-container").addEventListener("click", function (event) {
-  const clickedMovieElement = event.target.closest(".now, .popular, .top");
+// 검색 결과 나온 영화 카드를 클릭하면 상세 페이지로 이동
+document.querySelector("#search-list").addEventListener("click", function (event) {
+  const clickedMovieElement = event.target.closest(".movie-card");
 
   if (clickedMovieElement) {
-    const clickedMovieId = clickedMovieElement.id;
+    const clickedMovieId = clickedMovieElement.querySelector(".movie-title").id;
 
     // 클릭한 영화의 ID를 가지고 detailPage.html로 이동
     window.location.href = `detailPage.html?id=${clickedMovieId}`;
   }
 });
-
-// 포스터 위에 '~를 검색한 결과입니다.'
-
-// 검색
-// const filter = () => {
-//   const searchElement = document.getElementById("search-input"); // input 태그
-//   const searchElementInputValue = searchElement.value.toLowerCase();
-//   const listInner = document.getElementsByName("cardType");
-
-//   for (let i = 0; i < listInner.length; i++) {
-//     let searchTitle = listInner[i].querySelector("${movie.title}");
-
-//     if (searchTitle.textContent.toLowerCase().includes(searchElementInputValue)) {
-//       listInner[i].style.display = "";
-//     } else {
-//       listInner[i].style.display = "none";
-//     }
-//   }
-// };
-
-// [main page, detail page 공통] input을 클릭하면 search page로 이동
-// document.addEventListener("DOMContentLoaded", function () {
-//   const searchInput = document.getElementById("search-input");
-
-//   searchInput.addEventListener("click", function () {
-//     // 검색창(input)이 클릭되면 검색 페이지로 이동
-//     window.location.href = "searchPage.html";
-//   });
-// });
