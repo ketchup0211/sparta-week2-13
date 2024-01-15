@@ -253,7 +253,6 @@ document.getElementById("writeBtn").addEventListener("click", function (e) {
     reviews.push(newReview);
 
     localStorage.setItem("inputReview", JSON.stringify(reviews));
-    localStorage.setItem("movieID", movieId);
 
     loadReviews();
 
@@ -349,21 +348,3 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = "searchPage.html";
   });
 });
-
-/*
- * loadLatestReview
- * 최신 리뷰를 main-page.js로 반환하기 위한 함수
- */
-function loadLatestReview() {
-  let reviews = getReviews();
-  let movidID = localStorage.getItem("movieID");
-
-  if (!reviews.length) {
-    let review = reviews[reviews.length - 1];
-    return { review: reviews, movieID: movidID };
-  }
-
-  return null;
-}
-
-export { loadLatestReview };
