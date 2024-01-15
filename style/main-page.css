@@ -112,7 +112,7 @@ form {
   display: inline-block;
   border-radius: 10px;
 
-  margin: 10px;
+  margin: 10px 0px 10px 10px;
   width: 170px;
   height: 280px;
   padding: 0px;
@@ -121,6 +121,7 @@ form {
 
   overflow: hidden;
   position: relative;
+
 }
 
 .poster-img {
@@ -136,15 +137,15 @@ form {
 }
 
 .ranking {
-  font-size: 45px;
+  font-size: 60px;
   color: white;
 
   margin: 5px;
   padding: 5px;
 
   position: absolute;
-  top: 10px;
-  left: 20px;
+  top: 15px;
+  left: 30px;
 }
 
 .title-top {
@@ -156,8 +157,8 @@ form {
   padding: 5px;
 
   position: absolute;
-  bottom: 10px;
-  left: 20px;
+  bottom: 15px;
+  left: 30px;
 }
 
 .title-revew {
@@ -192,35 +193,37 @@ form {
   border-radius: 8px;
 }
 
-#new-movie,
+#now-movie,
 #popular-movie {
   margin: 10px 10px 5px 20px;
   padding-top: 20px;
 
-  color: white;
+  color: #f39009;
   font-size: 26px;
 }
 
 .btn {
-  background-color: transparent;
   border: 0px;
   padding: 10px;
-  bottom : 50%;
+  height : 100%;
   cursor: pointer;
 }
 
 button > img {
   width: 35px;
+  filter: invert(98%) sepia(0%) saturate(5%) hue-rotate(164deg) brightness(103%) contrast(103%) opacity(60%);
 }
 
 #left-btn{
   position:absolute;
   left: 0px;
+  background: linear-gradient(90deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%);
 }
 
 #right-btn{
   position : absolute;
   right:0px;
+  background: linear-gradient(270deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%);
 }
 
 /*  */
