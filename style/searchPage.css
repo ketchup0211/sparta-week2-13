@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
+
 a {
   text-decoration: none;
   color: inherit;
@@ -65,24 +67,26 @@ form {
 body {
   background-color: #151515;
   color: #eee;
+  font-family: "Pretendard-Regular";
 }
 
-.movie-list {
+.search-results-window {
+  margin-top: 100px;
+  margin-left: 40px;
+}
+
+#search-list {
+  font-family: "Hahmlet", serif;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
 
   padding: 2rem;
+  margin-left: 10px;
 }
 
-#top-list,
-#now-list,
-#popular-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 2rem;
-
-  padding: 2rem;
+#search-lsit > h5 {
+  width: 100%;
 }
 
 .movie-img {
