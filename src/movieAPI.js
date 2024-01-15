@@ -51,7 +51,7 @@ const getMovieData = {
     try {
       const response = await fetch(`${base_url}${movieId}?language=ko&api_key=${MOVIE_API}`);
       const jsonData = await response.json();
-      return jsonData.results;
+      return jsonData;
     } catch (err) {
       console.error(err);
       return null;
@@ -59,7 +59,7 @@ const getMovieData = {
   }
 };
 
-/*
+/* 테스트 예제입니다.
 const searchAndPrintTitles = async (query) => {
   try {
     const searchResult = await getMovieData.search(query);

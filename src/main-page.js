@@ -3,7 +3,7 @@ import { getMovieData } from "./movieAPI.js";
 // TODO#1 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
 // TODO#2 : 애니메이션 구현
 // TODO#3 : 디테일 및 꾸미기
-// TODO#4 : 리뷰 기능 구현 된건가? 안된거면 2순위로 !
+// TODO#4 : 최근에 올라온 리뷰 보여주기
 // LAST : 파일 정리 (파일명, 폴더, 최적화 등)
 
 // get Movie List
