@@ -29,12 +29,14 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
       hideElements(movieCard);
       const movieID = movieCard.id;
       displayOverview(movieID);
+      movieCard.style.cssText = "transform: scale(1.1);";
     });
 
     movieCard.addEventListener("mouseleave", () => {
       showElements(movieCard);
       const movieID = movieCard.id;
       hideOverview(movieID);
+      movieCard.style.cssText = "";
     });
   });
 };
