@@ -112,7 +112,7 @@ form {
   display: inline-block;
   border-radius: 10px;
 
-  margin: 10px 0px 10px 10px;
+  margin: 10px;
   width: 170px;
   height: 280px;
   padding: 0px;
@@ -137,8 +137,10 @@ form {
 }
 
 .ranking {
-  font-size: 60px;
-  color: white;
+  font-size: 80px;
+  font-family: 'Black Han Sans', sans-serif;
+  text-shadow:1px 1px 1px #000;
+  color: rgba(221, 54, 73, 0.791);
 
   margin: 5px;
   padding: 5px;
@@ -149,8 +151,9 @@ form {
 }
 
 .title-top {
-  font-size: 50px;
-  font-weight: bold;
+  font-size: 128px;
+  font-family: 'Black Han Sans', sans-serif;
+  text-shadow:1px 1px 1px #000;
   color: white;
 
   margin: 5px;
@@ -200,6 +203,7 @@ form {
 
   color: #f39009;
   font-size: 26px;
+  font-family: 'Do Hyeon', sans-serif;
 }
 
 .btn {

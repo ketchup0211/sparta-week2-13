@@ -29,7 +29,7 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
       hideElements(movieCard);
       const movieID = movieCard.id;
       displayOverview(cardClass, movieID);
-      movieCard.style.cssText = "transform: scale(1.1);";
+      movieCard.style.cssText = "transform: scale(1.1); color :#151515";
     });
 
     movieCard.addEventListener("mouseleave", () => {
@@ -78,7 +78,12 @@ const getPopularMovie = async () => {
   await renderMovies(getMovieData.getPolular, "#popular-movies", "popular");
 };
 
-/* button event */
+/*
+ *
+ * Silde container Button evenet
+ * 좌, 우 버튼 클릭 시 TOP3 영화 정보를 슬라이드하여 볼 수 있다.
+ *
+ */
 document.querySelector("#left-btn").addEventListener("click", () => {
   // 현재 active인 query의 이전 인덱스를 active로 한다. 없을 경우, 변화 없음
   let activeQuery = document.querySelector(".active");
@@ -111,7 +116,12 @@ document.querySelector("#right-btn").addEventListener("click", () => {
   }
 });
 
-/* 마우스 over 시 해당 영화에 대한 디테일 표시 */
+/*
+ *
+ * Display Overview event
+ * 마우스 over 시 해당 영화에 대한 overview를 표시한다.
+ *
+ */
 const hideElements = (movieCard) => {
   const imgElement = movieCard.querySelector(".poster-img");
   const titleElement = movieCard.querySelector(".title-list");
@@ -132,23 +142,30 @@ const showElements = (movieCard) => {
 
 const displayOverview = async (cardClass, movieID) => {
   const overview = await getMovieData.getMovieDetails(movieID);
-  let overviewContainer = document.createElement("div");
+
+  // element 생성 및 설정
+  const overviewContainer = document.createElement("div");
   overviewContainer.id = "overview-container";
-
-  // 가져온 개요를 해당 요소에 표시
-  if (overview["overview"].length > 100) {
-    overviewContainer.innerHTML = overview["overview"].slice(0, 151).trim() + "...";
-  } else overviewContainer.innerHTML = overview["overview"];
-
   overviewContainer.style.fontSize = "14px";
-  overviewContainer.style.padding = "14px";
+  overviewContainer.style.padding = "23px";
+  overviewContainer.style.lineHeight = "20px";
 
-  // 개요를 표시할 위치를 찾아서 추가
-  var cardElements = document.getElementsByClassName(cardClass);
-  for (let i = 0; i < cardElements.length; i++) {
-    if (cardElements[i].id === movieID) {
-      cardElements[i].appendChild(overviewContainer);
-    }
+  // overview 설정
+  if (overview["overview"].length > 100) {
+    overviewContainer.innerHTML = overview["overview"].slice(0, 130).trim() + "...";
+  } else if (!overview["overview"].length) {
+    overviewContainer.innerHTML = "줄거리를 제공하지 않는 영화입니다.";
+  } else {
+    overviewContainer.innerHTML = overview["overview"];
+  }
+
+  // 특정 카드에 overview 추가
+  const cardElements = document.getElementsByClassName(cardClass);
+  const targetCard = Array.from(cardElements).find((element) => element.id === movieID);
+
+  if (targetCard) {
+    targetCard.appendChild(overviewContainer);
+    targetCard.style.background = "rgba(255,255,255,0.48)";
   }
 };
 
@@ -161,7 +178,12 @@ const hideOverview = (movieID) => {
   }
 };
 
-/* 페이지 이동 */
+/*
+ *
+ * Page move event
+ * 영화에 대한 상세 정보 페이지, 또는 검색 페이지로 이동한다.
+ *
+ */
 // Click event handler for both now-movies and popular-movies
 document.querySelector(".container").addEventListener("click", function (event) {
   const clickedMovieElement = event.target.closest(".now, .popular, .top");
