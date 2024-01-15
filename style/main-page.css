@@ -10,23 +10,28 @@ a {
 }
 
 body {
-  overflow: scroll;
-  background-color: #151515;
-  color: #eee;
+    background-color: #151515;
+    color: #eee;
 }
 
 header {
-  width: 100%;
-  position: fixed;
-  top: 0px;
-  padding: 0 40px;
-  height: 80px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #151515;
-  z-index: 10000;
+    width: 100%;
+    position: fixed;
+    top:0;
+    padding: 0 40px;
+    height: 80px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #151515;
+    z-index: 10000;
+}
+header h1{
+    height: 60px;
+}
+header h1 img{
+    height: 100%;
 }
 
 header p {
