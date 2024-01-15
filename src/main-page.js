@@ -1,5 +1,5 @@
 import { getMovieData } from "./movieAPI.js";
-import { loadLatestReview } from "./detailPage.js";
+//import { loadLatestReview } from "./detailPage.js";
 
 // TODO#4 : 최근에 올라온 리뷰 보여주기
 // LAST : 파일 정리 (파일명, 폴더, 최적화 등)
@@ -178,14 +178,15 @@ const hideOverview = (movieID) => {
 /*
  * 최신 리뷰 중 하나를 가져와서 보여준다.
  */
-const latestReview = loadLatestReview();
+// const latestReview = loadLatestReview();
 
-if (latestReview) {
-  console.log("최신 리뷰:", latestReview);
-} else {
-  // 특정 영화에 대한 리뷰가 없을 때 처리
-  console.log("지정된 영화에 대한 리뷰가 없습니다.");
-}
+// if (latestReview) {
+//   // 최신 리뷰와 관련된 작업 수행
+//   console.log("최신 리뷰:", latestReview);
+// } else {
+//   // 특정 영화에 대한 리뷰가 없을 때 처리
+//   console.log("지정된 영화에 대한 리뷰가 없습니다.");
+// }
 
 /*
  *

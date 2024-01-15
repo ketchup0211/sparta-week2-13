@@ -364,4 +364,4 @@ function loadLatestReview() {
   return null;
 }
 
-export { loadLatestReview };
+//export { loadLatestReview };
