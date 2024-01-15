@@ -62,8 +62,10 @@ const searchAndUpdateCards = async (searchKeyword) => {
 
     if (filteredSearchResults.length > 0) {
       makeCards(async () => filteredSearchResults, "#search-list", "search");
+      document.querySelector("#search-list").style.display="grid"
     } else {
       showMessage(searchContainer, `"${searchKeyword}"에 대한 검색 결과가 없습니다.`);
+      document.querySelector("#search-list").style.display="block"
     }
   } catch (error) {
     console.error(error);
