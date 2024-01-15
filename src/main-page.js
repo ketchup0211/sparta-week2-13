@@ -136,7 +136,12 @@ const displayOverview = async (movieID) => {
   overviewContainer.id = "overview-container";
 
   // 가져온 개요를 해당 요소에 표시
-  overviewContainer.innerHTML = overview["overview"];
+  if (overview["overview"].length > 100) {
+    overviewContainer.innerHTML = overview["overview"].slice(0, 151).trim() + "...";
+  } else overviewContainer.innerHTML = overview["overview"];
+
+  overviewContainer.style.fontSize = "14px";
+  overviewContainer.style.padding = "14px";
 
   // 개요를 표시할 위치를 찾아서 추가
   const movieCard = document.getElementById(movieID);
