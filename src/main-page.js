@@ -95,7 +95,6 @@ document.querySelector("#right-btn").addEventListener("click", () => {
 });
 
 /* 페이지 이동 */
-
 // Click event handler for both now-movies and popular-movies
 document.querySelector(".container").addEventListener("click", function (event) {
   const clickedMovieElement = event.target.closest(".now, .popular, .top");
