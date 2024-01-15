@@ -32,6 +32,38 @@ const getTop3Movie = async () => {
   idx0.classList.add("active");
 };
 
+document.querySelector("#left-btn").addEventListener("click", () => {
+  // 현재 active인 query의 이전 인덱스를 active로 한다. 없을 경우, 변화 없음
+  let activeQuery = document.querySelector(".active");
+  if (activeQuery) {
+    let currentIdx = parseInt(activeQuery.classList[0].substring(3));
+    let prevIdx = (currentIdx - 1 + 3) % 3; // 이전 인덱스 계산
+
+    activeQuery.classList.remove("active");
+
+    let nextActive = document.querySelector(`.idx${prevIdx}`);
+    if (nextActive) {
+      nextActive.classList.add("active");
+    }
+  }
+});
+
+document.querySelector("#right-btn").addEventListener("click", () => {
+  // 현재 active인 query의 다음 인덱스를 active로 한다. 없을 경우, 변화 없음
+  let activeQuery = document.querySelector(".active");
+  if (activeQuery) {
+    let currentIdx = parseInt(activeQuery.classList[0].substring(3));
+    let nextIdx = (currentIdx + 1) % 3; // 다음 인덱스 계산
+
+    activeQuery.classList.remove("active");
+
+    let nextActive = document.querySelector(`.idx${nextIdx}`);
+    if (nextActive) {
+      nextActive.classList.add("active");
+    }
+  }
+});
+
 // get Movie List
 const renderMovies = async (getDataFunction, containerId, cardClass) => {
   const movieData = await getDataFunction();
