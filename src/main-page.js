@@ -27,7 +27,7 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
       hideElements(movieCard);
       const movieID = movieCard.id;
       displayOverview(cardClass, movieID);
-      movieCard.style.cssText = "transform: scale(1.05)"
+      // movieCard.style.cssText = "transform: scale(1.1)"
     });
 
     movieCard.addEventListener("mouseleave", () => {
