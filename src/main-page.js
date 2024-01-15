@@ -1,6 +1,7 @@
 import { getMovieData } from "./movieAPI.js";
 
-// TODO#4 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
+// TODO#1 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
+// TODO#2 : 애니메이션 구현
 
 // Top Rated Movie
 const getTop3Movie = async () => {
@@ -13,7 +14,7 @@ const getTop3Movie = async () => {
   top3.forEach((movie, idx) => {
     const rankSuffix = idx === 0 ? "st" : idx === 1 ? "nd" : idx === 2 ? "rd" : "th";
 
-    const contents = `<div class ="idx${idx}" id = ${movie.id} >
+    const contents = `<div class ="idx${idx} top" id = ${movie.id} >
     <img
     class="poster-img"
     src="https://image.tmdb.org/t/p/original${movie.backdrop_path}"
@@ -104,7 +105,7 @@ renderMovies(getMovieData.getPolular, "#popular-movies", "popular");
 
 // Click event handler for both now-movies and popular-movies
 document.querySelector(".container").addEventListener("click", function (event) {
-  const clickedMovieElement = event.target.closest(".now, .popular");
+  const clickedMovieElement = event.target.closest(".now, .popular, .top");
 
   if (clickedMovieElement) {
     const clickedMovieId = clickedMovieElement.id;
