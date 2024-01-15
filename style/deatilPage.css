@@ -1,69 +1,73 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 body {
-  background-color: #151515;
-  color: #eee;
+    background-color: #151515;
+    color: #eee;
+    font-family: pretendard;
 }
 
 header {
-  width: 100%;
-  position: fixed;
-  top:0;
-  padding: 0 40px;
-  height: 80px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #151515;
-  z-index: 10000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    padding: 0 40px;
+    height: 80px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #151515;
+    z-index: 10000;
 }
-header h1{
+
+header h1 {
     height: 60px;
 }
-header h1 img{
+
+header h1 img {
     height: 100%;
 }
 
 header p {
-  width: 200px;
-  border-bottom: 1px solid #eee;
-  display: flex;
+    width: 200px;
+    border-bottom: 1px solid #eee;
+    display: flex;
 }
 
 header input {
-  background-color: transparent;
-  border: none;
-  color: #eee;
+    background-color: transparent;
+    border: none;
+    color: #eee;
 }
 
 input:focus {
-  outline: none;
+    outline: none;
 }
 
 .form-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border-bottom: #eee solid 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: #eee solid 1px;
 }
 
 form {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* main --------------------------------------------- */
@@ -91,14 +95,14 @@ main::before {
 /* section --------------------------------------------- */
 
 section {
-  padding: 40px;
-  position: relative;
-  z-index: 1000;
+    padding: 40px;
+    position: relative;
+    z-index: 1000;
 }
 
 .info {
-  display: flex;
-  background: linear-gradient(transparent 80%, #151515);
+    display: flex;
+    background: linear-gradient(transparent 80%, #151515);
 }
 
 .movie_info {
@@ -110,25 +114,26 @@ section {
     margin-bottom: 80px;
     line-height: 40px;
 }
-.movie_info h3 span{
+
+.movie_info h3 span {
     font-size: 26px;
-    color:#aaa;
+    color: #aaa;
 }
 
 .movie_info p {
     padding-bottom: 10px;
-    color:#ddd;
+    color: #ddd;
 }
 
-.movie_info p:nth-of-type(4){
+.movie_info p:nth-of-type(4) {
     margin-bottom: 20px;
 }
 
 .movie_info p.summary {
     width: 80%;
-    font-size:18px;
+    font-size: 18px;
     line-height: 1.8em;
-    color:#eee;
+    color: #eee;
 }
 
 .poster {
@@ -137,63 +142,90 @@ section {
 }
 
 .poster img {
-  width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.m_poster{
+
+.m_poster {
     display: none;
 }
 
 /* 장르 css ------------------------------------------------------ */
-.genre span{
+.genre span {
     border-radius: 4px;
     padding: 0px 5px;
-    color:#151515;
+    color: #151515;
     font-weight: bold;
-    }
-    
-    .action {
-        background-color: rgb(254, 145, 145);
-    }
-    .adventure {
-        background-color: rgb(255, 133, 57);
-    }
-    .fantasy {
-        background-color: rgb(208, 109, 253);
-    }
-    .drama{
-        background-color: rgb(180, 181, 248);
-    }
-    .sf{
-        background-color: rgb(34, 255, 167);
-    }
-    .comedy{
-        background-color: rgb(255, 191, 0);
-    }
-    .family{
-        background-color: rgb(174, 254, 163);
-    }
-    .fear{
-        background-color: rgb(255, 48, 48);
-    }
-    .mystery{
-        background-color: rgb(255, 230, 37);
-    }
-    .thriller{
-        background-color: rgb(201, 32, 10);
-    }
-    .history{
-        background-color: rgb(27, 129, 231);
-    }
-    .war{
-        background-color: rgb(171, 60, 64);
-    }
-    .music{
-        background-color: rgb(222, 195, 255);
-    }
-    .animation{
-        background-color: rgb(234, 255, 202);
-    }
+}
+
+.action {
+    background-color: rgb(254, 145, 145);
+}
+
+.adventure {
+    background-color: rgb(255, 133, 57);
+}
+
+.fantasy {
+    background-color: rgb(208, 109, 253);
+}
+
+.drama {
+    background-color: rgb(180, 181, 248);
+}
+
+.sf {
+    background-color: rgb(34, 255, 167);
+}
+
+.comedy {
+    background-color: rgb(255, 191, 0);
+}
+
+.family {
+    background-color: rgb(174, 254, 163);
+}
+
+.fear {
+    background-color: rgb(255, 48, 48);
+}
+
+.mystery {
+    background-color: rgb(255, 230, 37);
+}
+
+.thriller {
+    background-color: rgb(201, 32, 10);
+}
+
+.history {
+    background-color: rgb(27, 129, 231);
+}
+
+.war {
+    background-color: rgb(171, 60, 64);
+}
+
+.music {
+    background-color: rgb(222, 195, 255);
+}
+
+.animation {
+    background-color: rgb(234, 255, 202);
+}
+
+.crime {
+    background-color: rgb(130, 91, 196);
+}
+.western{
+    background-color: #9c815d;
+}
+.tv-movie{
+    background-color: #9cb499;
+}
+.romance{
+    background-color: #fe6778;
+}
 
 /* review --------------------------------------------- */
 
@@ -203,37 +235,41 @@ section {
     background-color: #151515;
     /* background:linear-gradient(#151515 40%,transparent) */
 }
-.review::before{
+
+.review::before {
     content: '';
     display: block;
     position: absolute;
-    top:0;
-    left:50%;
+    top: 0;
+    left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 80px);
-    border-top:1px solid #aaa;;
+    border-top: 1px solid #aaa;
+    ;
     opacity: 0.2;
 }
 
 .review h4 {
     width: 11%;
-    margin-right:20px;
+    margin-right: 20px;
     font-size: 40px;
     text-transform: capitalize;
     height: 50px;
 }
-.review h4 span{
-    color:#DD364A
+
+.review h4 span {
+    color: #DD364A
 }
 
 .review>div {
     width: 90%;
-    padding-top:20px;
+    padding-top: 20px;
 }
 
 .review_input form {
-  display: flex;
+    display: flex;
 }
+
 .review_input {
     width: 100%;
     margin-bottom: 40px;
@@ -241,67 +277,115 @@ section {
 }
 
 .review_input input {
-  background-color: transparent;
-  border: transparent;
-  border-bottom: 1px solid #eee;
-  margin-left: 20px;
-  color: #eee;
-  font-size: 20px;
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 1px solid #eee;
+    margin-left: 20px;
+    color: #eee;
+    font-size: 20px;
 }
 
 #userName {
-  width: 100px;
-  margin-left: 0;
+    width: 100px;
+    margin-left: 0;
 }
 
 #password {
-  width: 100px;
+    width: 100px;
 }
 
 #reviewWrite {
-  flex: 8;
+    flex: 8;
 }
 
-button{
-    border:none;
+button {
+    border: none;
     border-radius: 5px;
-    color:#eee;
+    color: #eee;
     width: 100px;
 }
+
 .review_input button {
     margin-left: 20px;
     background-color: rgb(67, 179, 134);
 }
 
 .review_output {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.review_output div{
+
+.review_output div {
     display: flex;
     width: 100%;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
+
 .review_output button {
-    margin-left:auto;
+    margin-left: auto;
     background-color: #DD364A
 }
-.output_Name{
+
+.output_Name {
     width: 10%;
 }
-.output_Review{
+
+.output_Review {
     width: 80%;
     display: flex;
 }
-.output_Review::before{
+
+.output_Review::before {
     content: '';
     display: block;
     width: 3px;
     height: 100%;
     background-color: #aaa;
-    margin-right:10px;
+    margin-right: 10px;
     opacity: 0.2;
+}
+
+/* similar-item --------------------------------------------------------- */
+.similar {
+    background-color: #151515;
+}
+
+.similar h2 {
+    margin-bottom: 10px;
+    font-size:30px;
+}
+.similar h2 span{
+    color:#F4900B;
+    margin-right:10px;
+}
+
+.similar-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.similar-item {
+    position: relative;
+    border-radius: 10px;
+    margin: 10px;
+    width: 120px;
+    height: 200px;
+    padding: 0px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.similar-item img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    transition: .2s;
+}
+.similar-item:hover img{
+    transform: translate(-50%, -50%) scale(1.2);
 }
 
 /* media 1280 --------------------------------------------------------- */
@@ -320,126 +404,160 @@ button{
 }
 
 @media all and (max-width: 1050px) {
-    main{
-        padding-top:80px;
+    main {
+        padding-top: 80px;
     }
-    section{
-        padding:20px;
+
+    section {
+        padding: 20px;
     }
-    .movie_info{
+
+    .movie_info {
         flex: 1;
         text-align: center;
     }
-    .movie_info h3{
+
+    .movie_info h3 {
         font-size: 30px;
         line-height: 1.2em;
         margin-bottom: 20px;
     }
-    .movie_info h3 span{
+
+    .movie_info h3 span {
         display: none;
     }
-    .poster{
+
+    .poster {
         display: none;
     }
-    .m_poster{
+
+    .m_poster {
         display: inline-block;
         margin-bottom: 20px;
         height: 60vh;
     }
-    .movie_info p.summary{
+
+    .movie_info p.summary {
         width: 100%;
     }
-    .review h4{
+
+    .review h4 {
         text-align: center;
         width: 100%;
         margin: 0 0 20px 0;
     }
+
     .review_output button {
         height: 21px;
     }
 
+    .similar{
+        text-align: center;
+    }
+    .similar-list{
+        justify-content: center;
+
+    }
+
+
 }
+
 @media all and (max-width: 768px) {
-    header{
+    header {
         height: 60px;
         padding: 0 10px;
-        }
-        header h1{
-            height: 40px;
-        }
-    .m_poster{
-        width: 90%;
-       height: auto;
     }
-    .review_input input{
+
+    header h1 {
+        height: 40px;
+    }
+
+    .m_poster {
+        width: 90%;
+        height: auto;
+    }
+
+    .review_input input {
         font-size: 16px;
     }
-    .review_input form{
+
+    .review_input form {
         flex-wrap: wrap;
     }
-    .review_input form input{
+
+    .review_input form input {
         display: block;
-        margin-left:10px;
-        margin-bottom:20px;
+        margin-left: 10px;
+        margin-bottom: 20px;
     }
-    #userName{
+
+    #userName {
         width: calc((100% - 20px) / 2)
     }
-    #password{
+
+    #password {
         width: calc(100% / 2)
     }
-    #reviewWrite{
-        margin-left:0px;
+
+    #reviewWrite {
+        margin-left: 0px;
         flex: 1;
     }
-    .review_input button{
+
+    .review_input button {
         width: 100%;
         height: 2em;
-        margin-left:0;
+        margin-left: 0;
     }
-    .review_output div p.output_Review{
-        word-break:break-all;
-        margin-right:10px;
+
+    .review_output div p.output_Review {
+        word-break: break-all;
+        margin-right: 10px;
     }
-    .output_Name{
+
+    .output_Name {
         width: 100px;
     }
 }
+
 @media all and (max-width: 420px) {
-    .review_input form{
+    .review_input form {
         flex-wrap: wrap;
         flex-direction: row;
     }
-    .review_input form input{
+
+    .review_input form input {
         margin-left: 0px;
     }
-    #userName{
+
+    #userName {
         width: 100%
     }
-    #password{
+
+    #password {
         width: 100%
     }
-    #reviewWrite{       
-    }
-    .review_output div{
+
+    .review_output div {
         flex-direction: column;
     }
+
     .review_output button {
-        margin:0;
+        margin: 0;
     }
-    .review_output div p.output_Review{
-        /* margin-left:0; */
-    }
-    .review_output div p{
+
+    .review_output div p {
         flex-direction: column;
-        margin-bottom:8px;
+        margin-bottom: 8px;
     }
-    .output_Review::before{
+
+    .output_Review::before {
         width: 100%;
         height: 2px;
-        margin-bottom:5px;
+        margin-bottom: 5px;
     }
-    .output_Review{
+
+    .output_Review {
         width: 100%;
     }
 
