@@ -7,7 +7,7 @@ const makeCards = async (getDataType, container, cardType) => {
   const Cards = document.querySelector(container);
 
   if (!Array.isArray(movieData)) {
-    throw new Error("Invalid data format");
+    throw new Error(`유효하지 않은 데이터입니다.`);
   }
 
   Cards.innerHTML = movieData
@@ -36,7 +36,7 @@ const searchAndUpdateCards = async (searchKeyword) => {
   try {
     // 유효성 검사 : 빈문자열 검색 시
     if (!searchKeyword.trim()) {
-      showMessage(document.querySelector("#search-message"), `유효하지 않은 검색값입니다.`);
+      showMessage(document.querySelector("#search-validation"), `유효하지 않은 검색값입니다.`);
       return;
     }
 
@@ -51,7 +51,7 @@ const searchAndUpdateCards = async (searchKeyword) => {
     const allMovies = [...topMovies, ...nowPlayingMovies, ...popularMovies];
 
     // 검색 결과 메세지
-    showMessage(document.querySelector("#search-message"), `"${searchKeyword}"에 대한 검색 결과`);
+    showMessage(document.querySelector("#search-validation"), `"${searchKeyword}"에 대한 검색 결과`);
 
     // 검색 결과 필터링 : 전체 영화 중에서 top, now playing, popular
     const filteredSearchResults = searchResult.results.filter((searchedMovie) =>
