@@ -26,6 +26,12 @@ header {
   background-color: #151515;
   z-index: 10000;
 }
+header h1{
+    height: 60px;
+}
+header h1 img{
+    height: 100%;
+}
 
 header p {
   width: 200px;
@@ -59,27 +65,29 @@ form {
   cursor: pointer;
 }
 
-/* --------------------------------------------- */
+/* main --------------------------------------------- */
 
 main {
-  position: relative;
-  padding-top: 100px;
-  background-image: url(https://i.namu.wiki/i/pYns0gcNCbTD7yp7dBRbNHhyFFTf3cadcVNOZYX_mfZ686xhaDpqn2wKHBvcMMxlymTmdtRMmfe_I9xnTGhN2wVFo-NPvpbyV1LvOecPITKSSGF7m7ALWfaIKAqeWJXBU1RZV1AVLLSeDeTCXd5ELA.webp);
-  background-size: cover;
-  background-position: center;
+    position: relative;
+    padding-top: 100px;
+    background-image: url(https://i.namu.wiki/i/pYns0gcNCbTD7yp7dBRbNHhyFFTf3cadcVNOZYX_mfZ686xhaDpqn2wKHBvcMMxlymTmdtRMmfe_I9xnTGhN2wVFo-NPvpbyV1LvOecPITKSSGF7m7ALWfaIKAqeWJXBU1RZV1AVLLSeDeTCXd5ELA.webp);
+    background-size: cover;
+    background-position: center center;
 }
 
 main::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(40px);
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
 }
+
+/* section --------------------------------------------- */
 
 section {
   padding: 40px;
@@ -93,57 +101,142 @@ section {
 }
 
 .movie_info {
-  flex: 4;
+    flex: 3;
 }
 
 .movie_info h3 {
-  font-size: 50px;
-  margin-bottom: 100px;
+    font-size: 50px;
+    margin-bottom: 80px;
+    line-height: 40px;
+}
+.movie_info h3 span{
+    font-size: 26px;
+    color:#aaa;
 }
 
 .movie_info p {
-  margin-bottom: 20px;
+    padding-bottom: 10px;
+    color:#ddd;
 }
 
-.summary {
-  width: 60%;
+.movie_info p:nth-of-type(4){
+    margin-bottom: 20px;
+}
+
+.movie_info p.summary {
+    width: 80%;
+    font-size:18px;
+    line-height: 1.8em;
+    color:#eee;
 }
 
 .poster {
-  flex: 1;
+    flex: 1;
+    /* margin-right:40px; */
 }
 
 .poster img {
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+.m_poster{
+    display: none;
+}
 
-/* --------------------------------------------- */
+/* 장르 css ------------------------------------------------------ */
+.genre span{
+    border-radius: 4px;
+    padding: 0px 5px;
+    color:#151515;
+    font-weight: bold;
+    }
+    
+    .action {
+        background-color: rgb(254, 145, 145);
+    }
+    .adventure {
+        background-color: rgb(255, 133, 57);
+    }
+    .fantasy {
+        background-color: rgb(208, 109, 253);
+    }
+    .drama{
+        background-color: rgb(180, 181, 248);
+    }
+    .sf{
+        background-color: rgb(34, 255, 167);
+    }
+    .comedy{
+        background-color: rgb(255, 191, 0);
+    }
+    .family{
+        background-color: rgb(174, 254, 163);
+    }
+    .fear{
+        background-color: rgb(255, 48, 48);
+    }
+    .mystery{
+        background-color: rgb(255, 230, 37);
+    }
+    .thriller{
+        background-color: rgb(201, 32, 10);
+    }
+    .history{
+        background-color: rgb(27, 129, 231);
+    }
+    .war{
+        background-color: rgb(171, 60, 64);
+    }
+    .music{
+        background-color: rgb(222, 195, 255);
+    }
+    .animation{
+        background-color: rgb(234, 255, 202);
+    }
+
+/* review --------------------------------------------- */
 
 .review {
-  border-top: 1px solid #aaa;
-  display: flex;
-  background-color: #151515;
+    /* border-top: 1px solid #aaa; */
+    display: flex;
+    background-color: #151515;
+    /* background:linear-gradient(#151515 40%,transparent) */
+}
+.review::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+    width: calc(100% - 80px);
+    border-top:1px solid #aaa;;
+    opacity: 0.2;
 }
 
 .review h4 {
-  width: 10%;
-  font-size: 40px;
-  text-transform: capitalize;
-  height: 50px;
+    width: 11%;
+    margin-right:20px;
+    font-size: 40px;
+    text-transform: capitalize;
+    height: 50px;
+}
+.review h4 span{
+    color:#DD364A
 }
 
-.review > div {
-  width: 90%;
+.review>div {
+    width: 90%;
+    padding-top:20px;
 }
 
 .review_input form {
   display: flex;
 }
 .review_input {
-  width: 100%;
-  margin-bottom: 40px;
-  height: 50px;
+    width: 100%;
+    margin-bottom: 40px;
+    /* height: 50px; */
 }
 
 .review_input input {
@@ -168,9 +261,15 @@ section {
   flex: 8;
 }
 
+button{
+    border:none;
+    border-radius: 5px;
+    color:#eee;
+    width: 100px;
+}
 .review_input button {
-  width: 100px;
-  margin-left: 20px;
+    margin-left: 20px;
+    background-color: rgb(67, 179, 134);
 }
 
 .review_output {
@@ -178,29 +277,169 @@ section {
   flex-direction: column;
   justify-content: space-between;
 }
-.review_output div {
-  display: flex;
-  width: 100%;
-}
-.review_output div p {
-  margin-right: 20px;
+.review_output div{
+    display: flex;
+    width: 100%;
+    margin-bottom:20px;
 }
 .review_output button {
-  width: 100px;
-  margin-left: auto;
+    margin-left:auto;
+    background-color: #DD364A
+}
+.output_Name{
+    width: 10%;
+}
+.output_Review{
+    width: 80%;
+    display: flex;
+}
+.output_Review::before{
+    content: '';
+    display: block;
+    width: 3px;
+    height: 100%;
+    background-color: #aaa;
+    margin-right:10px;
+    opacity: 0.2;
 }
 
-/* --------------------------------------------------------- */
+/* media 1280 --------------------------------------------------------- */
 @media all and (max-width: 1280px) {
-  .review {
-    flex-direction: column;
-  }
+    .review {
+        flex-direction: column;
+    }
 
-  .review h4 {
-    margin-bottom: 20px;
-  }
+    .review h4 {
+        margin-bottom: 20px;
+    }
 
-  .review > div {
-    width: 100%;
-  }
+    .review>div {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 1050px) {
+    main{
+        padding-top:80px;
+    }
+    section{
+        padding:20px;
+    }
+    .movie_info{
+        flex: 1;
+        text-align: center;
+    }
+    .movie_info h3{
+        font-size: 30px;
+        line-height: 1.2em;
+        margin-bottom: 20px;
+    }
+    .movie_info h3 span{
+        display: none;
+    }
+    .poster{
+        display: none;
+    }
+    .m_poster{
+        display: inline-block;
+        margin-bottom: 20px;
+        height: 60vh;
+    }
+    .movie_info p.summary{
+        width: 100%;
+    }
+    .review h4{
+        text-align: center;
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+    .review_output button {
+        height: 21px;
+    }
+
+}
+@media all and (max-width: 768px) {
+    header{
+        height: 60px;
+        padding: 0 10px;
+        }
+        header h1{
+            height: 40px;
+        }
+    .m_poster{
+        width: 90%;
+       height: auto;
+    }
+    .review_input input{
+        font-size: 16px;
+    }
+    .review_input form{
+        flex-wrap: wrap;
+    }
+    .review_input form input{
+        display: block;
+        margin-left:10px;
+        margin-bottom:20px;
+    }
+    #userName{
+        width: calc((100% - 20px) / 2)
+    }
+    #password{
+        width: calc(100% / 2)
+    }
+    #reviewWrite{
+        margin-left:0px;
+        flex: 1;
+    }
+    .review_input button{
+        width: 100%;
+        height: 2em;
+        margin-left:0;
+    }
+    .review_output div p.output_Review{
+        word-break:break-all;
+        margin-right:10px;
+    }
+    .output_Name{
+        width: 100px;
+    }
+}
+@media all and (max-width: 420px) {
+    .review_input form{
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    .review_input form input{
+        margin-left: 0px;
+    }
+    #userName{
+        width: 100%
+    }
+    #password{
+        width: 100%
+    }
+    #reviewWrite{       
+    }
+    .review_output div{
+        flex-direction: column;
+    }
+    .review_output button {
+        margin:0;
+    }
+    .review_output div p.output_Review{
+        /* margin-left:0; */
+    }
+    .review_output div p{
+        flex-direction: column;
+        margin-bottom:8px;
+    }
+    .output_Review::before{
+        width: 100%;
+        height: 2px;
+        margin-bottom:5px;
+    }
+    .output_Review{
+        width: 100%;
+    }
+
 }

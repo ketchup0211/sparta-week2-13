@@ -12,32 +12,43 @@
     <script type="module" src="./src/movieAPI.js" defer></script>
     <script type="text/javascript" src="./apikey.js"></script>
   </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cine Wave</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,-25" />
+  <link rel="stylesheet" href="./style/deatilPage.css" />
+  <script type="module" src="./src/movieAPI.js" defer></script>
+  <script type="text/javascript" src="./apikey.js"></script>
+</head>
 
-  <body>
-    <header>
-      <h1><a href="./index.html">CineWave</a></h1>
-      <div class="form-container">
-        <form id="search-form" class="form">
-          <input type="search" name="searchValue" id="search-input" placeholder="영화를 검색하세요." />
-          <span class="material-symbols-outlined">search</span>
-        </form>
-      </div>
-    </header>
-    <main>
-      <section class="info"></section>
-      <section class="review">
-        <h4>review</h4>
-        <div>
-          <article class="review_input">
-            <form id="reviewForm" action="">
-              <input type="text" id="userName" placeholder="작성자" />
-              <input type="password" id="password" placeholder="비밀번호" />
-              <input type="text" id="reviewWrite" placeholder="리뷰를 작성해주세요." />
-              <button id="writeBtn">작성</button>
-            </form>
-          </article>
-          <article id="reviewOutput" class="review_output">
-            <!-- <div class="review_box">
+<body>
+  <header>
+    <h1><a href="./index.html"><img src="./assets/cwLogo_2.png" alt=""></a></h1>
+    <p>
+      <input type="search" id="search-input" placeholder="영화를 검색하세요." />
+      <span class="material-symbols-outlined">search</span>
+    </p>
+  </header>
+  <main>
+    <section class="info">
+     
+
+    </section>
+    <section class="review">
+      <h4><span>r</span>eview</h4>
+      <div>
+        <article class="review_input">
+          <form id="reviewForm" action="">
+            <input type="text" id="userName" placeholder="작성자" />
+            <input type="password" id="password" placeholder="비밀번호" />
+            <input type="text" id="reviewWrite" placeholder="리뷰를 작성해주세요." />
+            <button id="writeBtn">작성</button>
+          </form>
+        </article>
+        <article id="reviewOutput" class="review_output">
+          <!-- <div class="review_box">
                         <p class="output_Name">홍길동</p>
                         <p class="output_Review">리뷰쓴다- 하하하하</p>
                         <button id="removeBtn">삭제</button>

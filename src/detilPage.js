@@ -1,5 +1,30 @@
 import { getMovieData } from "./movieAPI.js";
 
+function convertToEnglishGenre(genreName) {
+    const genreMap = {
+        '액션': 'action',
+        '모험': 'adventure',
+        '판타지': 'fantasy',
+        '드라마': 'drama',
+        '코미디': 'comedy',
+        '가족': 'family',
+        '공포': 'fear',
+        '미스터리': 'mystery',
+        '스릴러': 'thriller',
+        '역사': 'history',
+        '전쟁': 'War',
+        '애니메이션': 'animation',
+        '음악': 'music',
+
+    };
+
+    // genreName이 매핑에 있는 경우 해당 값을 반환하고, 그렇지 않은 경우 원래의 문자열 반환
+    const mappedGenre = genreMap[genreName] || genreName;
+
+    // 영어로 변환 후 소문자로 변환하여 반환
+    return mappedGenre.toLowerCase();
+}
+
 document.addEventListener("DOMContentLoaded", async function () {
     // detailPage.html에서 URL 매개변수 읽기
     const urlParams = new URLSearchParams(window.location.search);
@@ -9,25 +34,38 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
         // API 호출
+        
         const movieData = await getMovieData.getMovieDetails(movieId);
 
         const main = document.querySelector("main");
         const info = document.querySelector(".info");
 
+        const overviewWithBreaks = movieData.overview.replace(/\.+(?!\.{1,})/g, '.<br>');
+        // .이나올때 <br>추가하여 문장을 더 잘보일수 있도록 하기.
+        //...일때는 그대로 표현하기.
+
         main.setAttribute("style", `background-image:url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`);
 
-        info.innerHTML = `
-      <article class="movie_info">
-        <h3>${movieData.original_title}</h3>
-        <p class="release_data">${movieData.release_date}</p>
-        <p class="rating">${movieData.vote_average}</p>
-        <p class="summary">${movieData.overview}</p>
-      </article>
-      <article class="poster">
-        <img src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}" alt="">
-      </article>
-    `;
-
+        if ('genres' in movieData) {
+            // const genres = movieData.genres.map(genre => genre.name.toLowerCase()); // 클래스 이름으로 사용하기 위해 소문자로 변환
+        
+            // HTML에 장르 정보 추가
+            info.innerHTML = `
+                <article class="movie_info">
+                    <h3>${movieData.title}<br/><span>${movieData.original_title}</span></h3>
+                    <img class="m_poster" src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}" alt="">
+                    <p class="genre">장르 : ${movieData.genres.map(genre => `<span class="${convertToEnglishGenre(genre.name)}">${genre.name}</span>`).join(' ')}</p>
+                    <p class="release_data">개봉일 : ${movieData.release_date}</p>
+                    <p class="runtime">상영시간 : ${movieData.runtime}분</p>
+                    <p class="rating">평점 : ${movieData.vote_average}</p>
+                    <p class="summary">${overviewWithBreaks}</p>
+                </article>
+                <article class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}" alt="">
+                </article>
+                
+            `;
+        }
         // API 응답을 이용한 작업 수행
         console.log("영화 정보:", movieData);
         // 여기에서 API로 받은 데이터를 이용하여 페이지에 원하는 내용을 표시하면 됩니다.
@@ -35,7 +73,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("API 호출 중 에러 발생:", error);
     }
 });
-
 
 //   review
 
@@ -65,8 +102,6 @@ window.onload = function () {
         }
     });
 };
-
-const MASTER_PASSWORD = "131313";
 
 document.getElementById("writeBtn").addEventListener("click", function (e) {
     e.preventDefault();
@@ -102,17 +137,17 @@ document.getElementById("writeBtn").addEventListener("click", function (e) {
 
 function validateInput(name, pass, review) {
     if (name.length < 2 || name.length > 10) {
-        alert("이름은 3자에서 10자 사이여야 합니다.");
+        alert("이름은 2자에서 10자 사이여야 합니다.");
         return false;
     }
 
-    if (pass.length < 4) {
-        alert("비밀번호는 최소 6자 이상이어야 합니다.");
+    if (pass.length < 4 || pass.length > 10) {
+        alert("비밀번호는 최소 4자이상 10자이하 이어야 합니다.");
         return false;
     }
 
     if (review.length < 5) {
-        alert("리뷰는 최소 10자 이상이어야 합니다.");
+        alert("리뷰는 최소 5자 이상이어야 합니다.");
         return false;
     }
 
@@ -129,7 +164,10 @@ function getReviews() {
     }
 }
 
+
+
 function loadReviews() {
+    
     let reviewList = document.getElementById("reviewOutput");
     reviewList.innerHTML = "";
 
@@ -139,7 +177,8 @@ function loadReviews() {
     const urlParams = new URLSearchParams(window.location.search);
     const movieId = urlParams.get('id');
 
-    for (let i = 0; i < reviews.length; i++) {
+    // 리뷰 역순으로 (최신화)
+    for (let i = reviews.length - 1; i >= 0; i--) {
         let review = reviews[i];
 
         // 해당 영화 ID에 대한 리뷰만 표시
