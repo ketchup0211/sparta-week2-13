@@ -76,7 +76,7 @@ body {
 }
 
 #search-list {
-  font-family: "Hahmlet", serif;
+  font-family: "Pretendard-Regular";
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
@@ -85,11 +85,22 @@ body {
   margin-left: 10px;
 }
 
-#search-lsit > h5 {
-  width: 100%;
+#search-lsit > h4 {
+  width: 120%;
+  font-family: "Pretendard";
 }
 
 .movie-img {
   margin: 50px;
   width: 100%;
+
+  justify-self: center;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 100ms ease-in;
+}
+
+.movie-img:hover {
+  transform: scale(1.02);
 }

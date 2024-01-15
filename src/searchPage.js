@@ -23,11 +23,20 @@ const makeCards = async (getDataType, container, cardType) => {
   console.log(Cards);
 };
 
-// 검색 -
+// 검색 메세지
+const showMessage = (container, message) => {
+  const messageElement = document.createElement("h4");
+  messageElement.textContent = message;
+  container.innerHTML = "";
+  container.appendChild(messageElement);
+};
+
+// 검색 결과에 맞는 카드 나타내기
 const searchAndUpdateCards = async (searchKeyword) => {
   try {
+    // 유효성 검사 : 빈문자열 검색 시
     if (!searchKeyword.trim()) {
-      console.log("유효하지 않은 검색어");
+      showMessage(document.querySelector("#search-message"), `유효하지 않은 검색값입니다.`);
       return;
     }
 
@@ -42,34 +51,26 @@ const searchAndUpdateCards = async (searchKeyword) => {
     const allMovies = [...topMovies, ...nowPlayingMovies, ...popularMovies];
 
     // 검색 결과 메세지
-    const searchContainer = document.querySelector("#search-list");
-    const messageContainer = document.querySelector("#search-message");
-    const messageElement = document.createElement("h4");
-
-    searchContainer.innerHTML = "";
-    messageContainer.innerHTML = "";
-
-    messageElement.textContent = `"${searchKeyword}"에 대한 검색 결과`;
-    messageContainer.appendChild(messageElement);
+    showMessage(document.querySelector("#search-message"), `"${searchKeyword}"에 대한 검색 결과`);
 
     // 검색 결과 필터링 : 전체 영화 중에서 top, now playing, popular
     const filteredSearchResults = searchResult.results.filter((searchedMovie) =>
       allMovies.some((movie) => movie.id === searchedMovie.id && movie.title === searchedMovie.title)
     );
 
+    const searchContainer = document.querySelector("#search-list");
+
     if (filteredSearchResults.length > 0) {
       makeCards(async () => filteredSearchResults, "#search-list", "search");
     } else {
-      const noResultsMessage = document.createElement("h5");
-      noResultsMessage.textContent = `"${searchKeyword}"에 대한 검색 결과가 없습니다.`;
-      searchContainer.appendChild(noResultsMessage);
+      showMessage(searchContainer, `"${searchKeyword}"에 대한 검색 결과가 없습니다.`);
     }
   } catch (error) {
     console.error(error);
   }
 };
 
-// 검색어를 입력하고  제출 시 검색 결과 표시
+// 검색어를 입력하고 제출 시 검색 결과 표시
 const form = document.querySelector("#search-form");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -79,7 +80,7 @@ form.addEventListener("submit", (event) => {
 
 // 검색어 입력 시 실시간으로 검색 결과 표시
 const searchInput = document.querySelector("#search-input");
-searchInput.addEventListener("keyup", () => {
+searchInput.addEventListener("input", () => {
   searchAndUpdateCards(searchInput.value);
 });
 
@@ -94,3 +95,5 @@ document.querySelector("#search-list").addEventListener("click", function (event
     window.location.href = `detailPage.html?id=${clickedMovieId}`;
   }
 });
+
+// 마우스 over 시 해당 영화에 대한 title과 바로가기?
