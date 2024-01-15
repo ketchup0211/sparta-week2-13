@@ -3,7 +3,7 @@ import { getMovieData } from "./movieAPI.js";
 // TODO#1 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
 // TODO#2 : 애니메이션 구현
 // TODO#3 : 디테일 및 꾸미기
-// TODO#4 : 리뷰 기능 구현 된건가? 안된거면 2순위로 !
+// TODO#4 : 최근에 올라온 리뷰 보여주기
 // LAST : 파일 정리 (파일명, 폴더, 최적화 등)
 
 // get Movie List
@@ -28,13 +28,15 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
     movieCard.addEventListener("mouseenter", () => {
       hideElements(movieCard);
       const movieID = movieCard.id;
-      displayOverview(movieID);
+      displayOverview(cardClass, movieID);
+      movieCard.style.cssText = "transform: scale(1.1);";
     });
 
     movieCard.addEventListener("mouseleave", () => {
       showElements(movieCard);
       const movieID = movieCard.id;
       hideOverview(movieID);
+      movieCard.style.cssText = "";
     });
   });
 };
@@ -128,17 +130,26 @@ const showElements = (movieCard) => {
   titleElement.style.display = "block";
 };
 
-const displayOverview = async (movieID) => {
+const displayOverview = async (cardClass, movieID) => {
   const overview = await getMovieData.getMovieDetails(movieID);
   let overviewContainer = document.createElement("div");
   overviewContainer.id = "overview-container";
 
   // 가져온 개요를 해당 요소에 표시
-  overviewContainer.innerHTML = overview["overview"];
+  if (overview["overview"].length > 100) {
+    overviewContainer.innerHTML = overview["overview"].slice(0, 151).trim() + "...";
+  } else overviewContainer.innerHTML = overview["overview"];
+
+  overviewContainer.style.fontSize = "14px";
+  overviewContainer.style.padding = "14px";
 
   // 개요를 표시할 위치를 찾아서 추가
-  const movieCard = document.getElementById(movieID);
-  movieCard.appendChild(overviewContainer);
+  var cardElements = document.getElementsByClassName(cardClass);
+  for (let i = 0; i < cardElements.length; i++) {
+    if (cardElements[i].id === movieID) {
+      cardElements[i].appendChild(overviewContainer);
+    }
+  }
 };
 
 const hideOverview = (movieID) => {

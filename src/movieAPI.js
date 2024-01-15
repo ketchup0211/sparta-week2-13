@@ -59,7 +59,7 @@ const getMovieData = {
   }
 };
 
-/*
+/* 테스트 예제입니다.
 const searchAndPrintTitles = async (query) => {
   try {
     const searchResult = await getMovieData.search(query);
