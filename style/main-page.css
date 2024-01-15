@@ -10,7 +10,6 @@ a {
 }
 
 body {
-    overflow:scroll;
     background-color: #151515;
     color: #eee;
 }
@@ -18,7 +17,7 @@ body {
 header {
     width: 100%;
     position: fixed;
-    top: 0px;
+    top:0;
     padding: 0 40px;
     height: 80px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -27,6 +26,12 @@ header {
     align-items: center;
     background-color: #151515;
     z-index: 10000;
+}
+header h1{
+    height: 60px;
+}
+header h1 img{
+    height: 100%;
 }
 
 header p {
