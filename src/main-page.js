@@ -22,6 +22,21 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
     .join("");
 
   container.innerHTML = movieList;
+
+  // 각 영화 카드에 마우스 이벤트 리스너 추가
+  container.querySelectorAll(`.${cardClass}`).forEach((movieCard) => {
+    movieCard.addEventListener("mouseenter", () => {
+      hideElements(movieCard);
+      const movieID = movieCard.id;
+      displayOverview(movieID);
+    });
+
+    movieCard.addEventListener("mouseleave", () => {
+      showElements(movieCard);
+      const movieID = movieCard.id;
+      hideOverview(movieID);
+    });
+  });
 };
 
 // Top Rated Movie
@@ -93,6 +108,47 @@ document.querySelector("#right-btn").addEventListener("click", () => {
     }
   }
 });
+
+/* 마우스 over 시 해당 영화에 대한 디테일 표시 */
+const hideElements = (movieCard) => {
+  const imgElement = movieCard.querySelector(".poster-img");
+  const titleElement = movieCard.querySelector(".title-list");
+
+  // 이미지와 텍스트 숨기기
+  imgElement.style.display = "none";
+  titleElement.style.display = "none";
+};
+
+const showElements = (movieCard) => {
+  const imgElement = movieCard.querySelector(".poster-img");
+  const titleElement = movieCard.querySelector(".title-list");
+
+  // 이미지와 텍스트 표시
+  imgElement.style.display = "block";
+  titleElement.style.display = "block";
+};
+
+const displayOverview = async (movieID) => {
+  const overview = await getMovieData.getMovieDetails(movieID);
+  let overviewContainer = document.createElement("div");
+  overviewContainer.id = "overview-container";
+
+  // 가져온 개요를 해당 요소에 표시
+  overviewContainer.innerHTML = overview["overview"];
+
+  // 개요를 표시할 위치를 찾아서 추가
+  const movieCard = document.getElementById(movieID);
+  movieCard.appendChild(overviewContainer);
+};
+
+const hideOverview = (movieID) => {
+  const overviewContainer = document.getElementById("overview-container");
+
+  // 개요를 숨기기
+  if (overviewContainer) {
+    overviewContainer.remove();
+  }
+};
 
 /* 페이지 이동 */
 // Click event handler for both now-movies and popular-movies
