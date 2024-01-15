@@ -27,6 +27,7 @@ header {
     background-color: #151515;
     z-index: 10000;
 }
+
 header h1{
     height: 60px;
 }
@@ -50,13 +51,6 @@ input:focus {
   outline: none;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border-bottom: #eee solid 1px;
-}
-
 form {
   display: flex;
   flex-direction: row;
@@ -64,6 +58,12 @@ form {
   align-items: center;
 
   cursor: pointer;
+}
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: #eee solid 1px;
 }
 
 .container {
@@ -90,6 +90,7 @@ form {
 .movie-list::-webkit-scrollbar {
   display: none;
 }
+
 .slider-container {
   background-color: black;
   display: inline-block;
