@@ -144,9 +144,9 @@ const displayOverview = async (cardClass, movieID) => {
   // element 생성 및 설정
   const overviewContainer = document.createElement("div");
   overviewContainer.id = "overview-container";
-  overviewContainer.style.fontSize = "14px";
-  overviewContainer.style.padding = "23px";
-  overviewContainer.style.lineHeight = "20px";
+  // overviewContainer.style.fontSize = "14px";
+  // overviewContainer.style.padding = "23px";
+  // overviewContainer.style.lineHeight = "20px";
 
   // overview 설정
   if (overview["overview"].length > 100) {
