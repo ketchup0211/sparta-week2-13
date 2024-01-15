@@ -54,16 +54,30 @@ body {
 }
 
 #search-form {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  color:#151515;
 }
 
 #search-input {
-  height: 200px;
+  /* height: 100px; */
+  border-radius: 50px;
+  height: 2em;
   width: 400px;
   font-size: 16px;
   padding: 10px;
+  border:0px;
+}
+#search-input:focus{
+  outline: none;
+}
+
+.material-symbols-outlined{
+  position: absolute;
+  top:5px;
+  right:10px;
 }
 
 #search-validation {
@@ -105,17 +119,24 @@ body {
   width: 100%;
   align-self: center;
 }
+.movie-card{
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
 
 .movie-img {
-  margin: 50px;
+  /* margin: 50px; */
+  display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   justify-self: center;
-  border-radius: 5px;
   cursor: pointer;
   user-select: none;
-  transition: transform 100ms ease-in;
+  transition: all  .2s ease-in;
 }
 
 .movie-img:hover {
-  transform: scale(1.02);
+  transform: scale(1.1);
 }
