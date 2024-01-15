@@ -28,7 +28,7 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
     movieCard.addEventListener("mouseenter", () => {
       hideElements(movieCard);
       const movieID = movieCard.id;
-      displayOverview(movieID);
+      displayOverview(cardClass, movieID);
       movieCard.style.cssText = "transform: scale(1.1);";
     });
 
@@ -130,7 +130,7 @@ const showElements = (movieCard) => {
   titleElement.style.display = "block";
 };
 
-const displayOverview = async (movieID) => {
+const displayOverview = async (cardClass, movieID) => {
   const overview = await getMovieData.getMovieDetails(movieID);
   let overviewContainer = document.createElement("div");
   overviewContainer.id = "overview-container";
@@ -144,8 +144,12 @@ const displayOverview = async (movieID) => {
   overviewContainer.style.padding = "14px";
 
   // 개요를 표시할 위치를 찾아서 추가
-  const movieCard = document.getElementById(movieID);
-  movieCard.appendChild(overviewContainer);
+  var cardElements = document.getElementsByClassName(cardClass);
+  for (let i = 0; i < cardElements.length; i++) {
+    if (cardElements[i].id === movieID) {
+      cardElements[i].appendChild(overviewContainer);
+    }
+  }
 };
 
 const hideOverview = (movieID) => {
