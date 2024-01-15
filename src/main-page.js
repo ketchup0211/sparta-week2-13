@@ -178,15 +178,35 @@ const hideOverview = (movieID) => {
 /*
  * 최신 리뷰 중 하나를 가져와서 보여준다.
  */
-// const latestReview = loadLatestReview();
+function getReviews() {
+  const reviews = localStorage.getItem("inputReview");
+  if (reviews) {
+    return JSON.parse(reviews);
+  } else {
+    return [];
+  }
+}
 
-// if (latestReview) {
-//   // 최신 리뷰와 관련된 작업 수행
-//   console.log("최신 리뷰:", latestReview);
-// } else {
-//   // 특정 영화에 대한 리뷰가 없을 때 처리
-//   console.log("지정된 영화에 대한 리뷰가 없습니다.");
-// }
+const loadLatestReview = async () => {
+  const reviews = getReviews();
+  try {
+    const latestReviewMovieId = reviews[reviews.length - 1].movieId;
+    const latestReview = reviews[reviews.length - 1].userReview;
+    const latestReviewMovie = await getMovieData.getMovieDetails(latestReviewMovieId);
+
+    let review = `<p class="title-review">
+        ${latestReviewMovie.title}
+        <span class="review">${latestReview}</span>
+      </p>`;
+    let reviewContainer = document.querySelector("#recent-review");
+    reviewContainer.innerHTML = review;
+  } catch (err) {
+    if (!reviews.length) {
+      console.log("리뷰가 없습니다.");
+    }
+    console.log(err);
+  }
+};
 
 /*
  *
@@ -220,3 +240,4 @@ document.addEventListener("DOMContentLoaded", function () {
 getTop3Movie();
 getNowMovie();
 getPopularMovie();
+loadLatestReview();
