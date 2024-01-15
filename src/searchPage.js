@@ -9,13 +9,14 @@ const makeCards = async (getDataType, container, cardType) => {
   Cards.innerHTML = movieData
     .map(
       (movie) => `
-    <li class ="movie-card" name="${cardType}">
-    <h1 class="movie-title" id="${movie.title}"></h1>
+    <div class ="movie-card" name="${cardType}">
+    <h1 class="movie-title" id="${movie.id}"></h1>
     <img class="movie-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt=${movie.title}/>
-    </li>
+    </div>
     `
     )
     .join("");
+  console.log(Cards);
 };
 
 // Top-Rated
@@ -67,6 +68,20 @@ const searchInput = document.querySelector("#search-input");
 searchInput.addEventListener("input", () => {
   showSearchResult(searchInput.value);
 });
+
+// Click event handler for both now-movies and popular-movies
+document.querySelector(".movie-container").addEventListener("click", function (event) {
+  const clickedMovieElement = event.target.closest(".now, .popular, .top");
+
+  if (clickedMovieElement) {
+    const clickedMovieId = clickedMovieElement.id;
+
+    // 클릭한 영화의 ID를 가지고 detailPage.html로 이동
+    window.location.href = `detailPage.html?id=${clickedMovieId}`;
+  }
+});
+
+// 포스터 위에 '~를 검색한 결과입니다.'
 
 // 검색
 // const filter = () => {

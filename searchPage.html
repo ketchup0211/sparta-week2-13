@@ -15,7 +15,9 @@
   </head>
   <body>
     <header>
-      <h1><a href="./index.html">CineWave</a></h1>
+      <h1>
+        <a href="./index.html"><img src="./assets/cwLogo_2.png" alt="" /></a>
+      </h1>
       <div class="form-container">
         <form id="search-form" class="form">
           <input type="search" name="searchValue" id="search-input" placeholder="영화를 검색하세요." />
@@ -23,9 +25,15 @@
         </form>
       </div>
     </header>
-    <ul class="movie-list" id="top-list"></ul>
-    <ul class="movie-list" id="now-list"></ul>
-    <ul class="movie-list" id="popular-list"></ul>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="movie-container">
+      <div class="movie-list" id="top-list"></div>
+      <div class="movie-list" id="now-list"></div>
+      <div class="movie-list" id="popular-list"></div>
+    </div>
     <footer>copyright. CineWave</footer>
   </body>
 </html>

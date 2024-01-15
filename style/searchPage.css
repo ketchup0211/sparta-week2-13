@@ -12,6 +12,7 @@ a {
 header {
   width: 100%;
   position: fixed;
+  top: 0;
   padding: 0 40px;
   height: 80px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -20,6 +21,13 @@ header {
   align-items: center;
   background-color: #151515;
   z-index: 10000;
+}
+
+header h1 {
+  height: 60px;
+}
+header h1 img {
+  height: 100%;
 }
 
 header p {
@@ -60,22 +68,24 @@ body {
 }
 
 .movie-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2rem;
+
+  padding: 2rem;
 }
 
 #top-list,
 #now-list,
 #popular-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 2rem;
 
   padding: 2rem;
 }
 
 .movie-img {
+  margin: 50px;
   width: 100%;
 }

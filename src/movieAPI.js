@@ -22,8 +22,6 @@ const fetchMovieData = async (endpoint) => {
   }
 };
 
-
-
 // get data from TMDB
 const getMovieData = {
   //  get Top Rated Movie Data frome TMDB API
