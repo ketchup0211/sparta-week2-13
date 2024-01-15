@@ -27,7 +27,7 @@ const renderMovies = async (getDataFunction, containerId, cardClass) => {
       hideElements(movieCard);
       const movieID = movieCard.id;
       displayOverview(cardClass, movieID);
-      movieCard.style.cssText = "transform: scale(1.1); color :#151515";
+      // movieCard.style.cssText = "transform: scale(1.1)"
     });
 
     movieCard.addEventListener("mouseleave", () => {
@@ -125,8 +125,8 @@ const hideElements = (movieCard) => {
   const titleElement = movieCard.querySelector(".title-list");
 
   // 이미지와 텍스트 숨기기
-  imgElement.style.display = "none";
-  titleElement.style.display = "none";
+  // imgElement.style.display = "none";
+  // titleElement.style.display = "none";
 };
 
 const showElements = (movieCard) => {
@@ -134,8 +134,8 @@ const showElements = (movieCard) => {
   const titleElement = movieCard.querySelector(".title-list");
 
   // 이미지와 텍스트 표시
-  imgElement.style.display = "block";
-  titleElement.style.display = "block";
+  // imgElement.style.display = "block";
+  // titleElement.style.display = "block";
 };
 
 const displayOverview = async (cardClass, movieID) => {
@@ -144,9 +144,9 @@ const displayOverview = async (cardClass, movieID) => {
   // element 생성 및 설정
   const overviewContainer = document.createElement("div");
   overviewContainer.id = "overview-container";
-  overviewContainer.style.fontSize = "14px";
-  overviewContainer.style.padding = "23px";
-  overviewContainer.style.lineHeight = "20px";
+  // overviewContainer.style.fontSize = "14px";
+  // overviewContainer.style.padding = "23px";
+  // overviewContainer.style.lineHeight = "20px";
 
   // overview 설정
   if (overview["overview"].length > 100) {
@@ -162,8 +162,8 @@ const displayOverview = async (cardClass, movieID) => {
   const targetCard = Array.from(cardElements).find((element) => element.id === movieID);
 
   if (targetCard) {
-    targetCard.appendChild(overviewContainer);
-    targetCard.style.background = "rgba(255,255,255,0.48)";
+    targetCard.prepend(overviewContainer);
+    // targetCard.style.background = "rgba(255,255,255,0.8)";
   }
 };
 
