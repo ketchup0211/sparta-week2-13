@@ -348,20 +348,3 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = "searchPage.html";
   });
 });
-
-/*
- * loadLatestReview
- * 최신 리뷰를 main-page.js로 반환하기 위한 함수
- */
-function loadLatestReview() {
-  let reviews = getReviews();
-
-  if (!reviews.length) {
-    let review = reviews[reviews.length - 1];
-    return review;
-  }
-
-  return null;
-}
-
-//export { loadLatestReview };
