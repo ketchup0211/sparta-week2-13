@@ -1,8 +1,6 @@
 import { getMovieData } from "./movieAPI.js";
+import { loadLatestReview } from "./detailPage.js";
 
-// TODO#1 : .movie-list 내부 영화에 마우스 hover 시 애니메이션 및 요약 보여주기
-// TODO#2 : 애니메이션 구현
-// TODO#3 : 디테일 및 꾸미기
 // TODO#4 : 최근에 올라온 리뷰 보여주기
 // LAST : 파일 정리 (파일명, 폴더, 최적화 등)
 
@@ -172,11 +170,22 @@ const displayOverview = async (cardClass, movieID) => {
 const hideOverview = (movieID) => {
   const overviewContainer = document.getElementById("overview-container");
 
-  // 개요를 숨기기
   if (overviewContainer) {
     overviewContainer.remove();
   }
 };
+
+/*
+ * 최신 리뷰 중 하나를 가져와서 보여준다.
+ */
+const latestReview = loadLatestReview();
+
+if (latestReview) {
+  console.log("최신 리뷰:", latestReview);
+} else {
+  // 특정 영화에 대한 리뷰가 없을 때 처리
+  console.log("지정된 영화에 대한 리뷰가 없습니다.");
+}
 
 /*
  *
