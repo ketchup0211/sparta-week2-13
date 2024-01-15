@@ -24,7 +24,7 @@ const fetchMovieData = async (endpoint) => {
 
 // get data from TMDB
 const getMovieData = {
-  //  get Top Rated Movie Data frome TMDB API
+  //  get Top Rated Movie Data from TMDB API
   getTopRated: async () => await fetchMovieData("top_rated"),
 
   //  get Now Playing Movie Data from TMDB API
@@ -33,11 +33,25 @@ const getMovieData = {
   //  get Polular Movie Data from TMDB API
   getPolular: async () => await fetchMovieData("popular"),
 
+  //  get All Movie Data from TMDB API
+  search: async (query) => {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${query}&language=ko&api_key=${MOVIE_API}`
+      );
+      const jsonData = await response.json();
+      return jsonData;
+    } catch (err) {
+      console.log(err);
+      return [];
+    }
+  },
+  //'https://api.themoviedb.org/3/search/movie?query=The&include_adult=false&language=ko&page=1'
   getMovieDetails: async (movieId) => {
     try {
       const response = await fetch(`${base_url}${movieId}?language=ko&api_key=${MOVIE_API}`);
       const jsonData = await response.json();
-      return jsonData;
+      return jsonData.results;
     } catch (err) {
       console.error(err);
       return null;
@@ -45,4 +59,18 @@ const getMovieData = {
   }
 };
 
+/*
+const searchAndPrintTitles = async (query) => {
+  try {
+    const searchResult = await getMovieData.search(query);
+    searchResult.results.forEach((e) => {
+      console.log(e.title);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+searchAndPrintTitles("치킨");
+ */
 export { getMovieData, fetchMovieData, options };
