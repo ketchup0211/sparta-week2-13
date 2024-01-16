@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const overviewWithBreaks = movieData.overview ? movieData.overview.replace(/\.+(?!\.{1,})/g, ".<br>") : "";
 
-    main.setAttribute("style", `background-image:url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`);
+    main.setAttribute("style", `background-image:url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path})`);
 
     if ("genres" in movieData) {
       const genres = movieData.genres.map((genre) => genre.name.toLowerCase());
