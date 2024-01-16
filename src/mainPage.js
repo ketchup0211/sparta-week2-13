@@ -222,7 +222,7 @@ document.querySelector(".container").addEventListener("click", function (event) 
     const clickedMovieId = clickedMovieElement.id;
 
     // 클릭한 영화의 ID를 가지고 detailPage.html로 이동
-    window.location.href = `detailPage.html?id=${clickedMovieId}`;
+    window.location.href = `./pages/detailPage.html?id=${clickedMovieId}`;
   }
 });
 
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   searchInput.addEventListener("click", function () {
     // 검색창(input)이 클릭되면 검색 페이지로 이동
-    window.location.href = "searchPage.html";
+    window.location.href = "./pages/searchPage.html";
   });
 });
 

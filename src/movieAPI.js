@@ -46,7 +46,6 @@ const getMovieData = {
       return [];
     }
   },
-  //'https://api.themoviedb.org/3/search/movie?query=The&include_adult=false&language=ko&page=1'
   getMovieDetails: async (movieId) => {
     try {
       const response = await fetch(`${base_url}${movieId}?language=ko&api_key=${MOVIE_API}`);
